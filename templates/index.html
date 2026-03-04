@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% block title %}Powervision Pvt Ltd – Reliable Solutions, Unwavering Commitment{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="main-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="container hero-inner">
+    <div class="columns is-vcentered">
+      <div class="column is-7">
+        <div class="eyebrow fu"><span>Welcome to Powervision Pvt Ltd</span></div>
+        <h1 class="fu2">
+          Reliable<br>
+          Solutions,<br>
+          <em>Unwavering</em><br>
+          Commitment
+        </h1>
+        <p class="hero-sub fu3">
+          We empower businesses and homes across Zimbabwe with reliable solar and backup power solutions. Our technical expertise extends to comprehensive onsite services, ensuring uninterrupted operation where clean and reliable power is paramount.
+        </p>
+        <div class="fu4" style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="/products-services" class="btn-primary">
+            <i class="bi bi-grid-fill"></i> Products &amp; Services
+          </a>
+          <a href="/contact" class="btn-outline">
+            <i class="bi bi-arrow-right"></i> Contact Us
+          </a>
+        </div>
+      </div>
+
+      <div class="column is-5 fu4">
+        <div class="hero-stats">
+          {% for stat in stats %}
+          <div class="stat-box">
+            <div class="stat-val">{{ stat.value }}</div>
+            <div class="stat-lbl">{{ stat.label }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<section class="section bg-white py-6">
+  <div class="container">
+    <div class="columns is-vcentered is-variable is-8">
+      <div class="column is-5">
+        <div style="background:var(--navy);height:400px;display:flex;align-items:center;justify-content:center;position:relative">
+          <i class="bi bi-buildings" style="font-size:7rem;color:rgba(232,160,32,0.18)"></i>
+          <div style="position:absolute;bottom:-16px;left:-16px;background:var(--gold);padding:1.1rem 1.4rem">
+            <strong style="display:block;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2.2rem;color:var(--navy);line-height:1">20+</strong>
+            <span style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy)">Years in Business</span>
+          </div>
+        </div>
+      </div>
+      <div class="column is-7">
+        <div class="eyebrow"><span>About Us</span></div>
+        <h2 class="sec-title">Powervision Pvt Ltd</h2>
+        <p class="mb-4" style="color:var(--text);line-height:1.75">
+          Powervision is a team driven by a shared passion: delivering exceptional power engineering solutions across the industrial, commercial, and domestic landscapes.
+        </p>
+        <p class="mb-4" style="color:var(--text);line-height:1.75">
+          We prioritise building a deep understanding of your unique requirements, translating that knowledge into high-quality electrical solutions designed for consistent performance and unwavering protection. Our commitment is reflected in every project we undertake, from the largest industrial facility to the most intricate residential fit-out.
+        </p>
+        <p style="color:var(--text);line-height:1.75">
+          Our success rests on the shoulders of a skilled and dedicated team — experienced project managers supported by certified electricians and responsive office staff, ensuring every project runs smoothly from start to finish.
+        </p>
+        <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap">
+          <a href="/about" class="btn-primary"><i class="bi bi-arrow-right"></i> Read More</a>
+          <a href="/the-team" class="btn-dark"><i class="bi bi-people-fill"></i> Meet the Team</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE PROVIDE -->
+<section class="section bg-navy py-6">
+  <div class="container">
+    <div class="columns is-vcentered mb-5">
+      <div class="column">
+        <div class="eyebrow"><span>We Provide the Best</span></div>
+        <h2 class="sec-title light">Products &amp; Services</h2>
+      </div>
+      <div class="column is-narrow">
+        <a href="/products-services" class="btn-outline"><i class="bi bi-arrow-right"></i> View All</a>
+      </div>
+    </div>
+
+    <div class="columns is-multiline" id="svc-grid">
+      {% for svc in services %}
+      <div class="column is-4">
+        <div class="svc-card"
+             hx-get="/htmx/services/{{ svc.id }}"
+             hx-target="#svc-detail"
+             hx-swap="innerHTML">
+          <i class="bi {{ svc.icon }} svc-icon"></i>
+          <p class="svc-title">{{ svc.nav_label }}</p>
+          <p class="svc-desc">{{ svc.tagline }}</p>
+          <p class="svc-more"><i class="bi bi-arrow-right"></i> Learn more</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div id="svc-detail"></div>
+  </div>
+</section>
+
+<!-- QUALITY QUOTE -->
+<section style="background:var(--navy-dk);padding:3rem 0;border-top:1px solid rgba(255,255,255,0.06)">
+  <div class="container has-text-centered">
+    <i class="bi bi-quote" style="font-size:2rem;color:var(--gold);opacity:0.6;display:block;margin-bottom:0.75rem"></i>
+    <p style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.6rem;color:#fff;letter-spacing:0.03em;text-transform:uppercase">
+      Quality Only Happens When You Care Enough To Do Your Best.
+    </p>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="section bg-off py-5">
+  <div class="container">
+    <div class="has-text-centered mb-5">
+      <div class="eyebrow" style="justify-content:center"><span>Authorised Dealers &amp; Partners</span></div>
+      <h2 class="sec-title">Brands We Work With</h2>
+    </div>
+    <div class="columns is-multiline">
+      {% set brands = [
+        ('bi-sun','Synsynk'),('bi-sun','Deye'),('bi-sun','Victron Energy'),('bi-sun','Fronius'),
+        ('bi-sun','Alpha Outback'),('bi-sun','Atess'),('bi-battery-charging','Pylontech'),
+        ('bi-battery-charging','FreedomWon'),('bi-battery-charging','WECO'),('bi-battery-charging','Sunsynk'),
+        ('bi-shield-check','Schneider Electric (APC)'),('bi-shield-check','Tripplite'),
+        ('bi-droplet','Lorentz'),('bi-droplet','Grundfos'),('bi-box-seam','Jinko Solar'),('bi-box-seam','Astro Energy'),
+      ] %}
+      {% for icon, brand in brands %}
+      <div class="column is-3">
+        <div style="background:#fff;border:1px solid var(--border);padding:1rem 1.25rem;display:flex;align-items:center;gap:10px">
+          <i class="bi {{ icon }}" style="color:var(--gold);font-size:1.1rem;flex-shrink:0"></i>
+          <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.9rem;color:var(--navy);text-transform:uppercase;letter-spacing:0.04em">{{ brand }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="container">
+    <div class="columns is-vcentered">
+      <div class="column">
+        <h2>Ready to Power Your Business?</h2>
+        <p>Contact us today for a free consultation and quote.</p>
+      </div>
+      <div class="column is-narrow">
+        <a href="/contact" class="btn-dark"><i class="bi bi-send-fill"></i> Contact Us Today</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

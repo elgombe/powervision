@@ -1,0 +1,24 @@
+<div class="detail-panel fu">
+  <div class="columns is-vcentered is-variable is-6">
+    <div class="column is-6">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem">
+        <i class="bi {{ service.icon }}" style="font-size:2rem;color:var(--gold)"></i>
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;text-transform:uppercase;color:var(--navy);line-height:1">{{ service.title }}</h3>
+      </div>
+      <p style="color:var(--text);line-height:1.75;margin-bottom:1rem">{{ service.description[:300] }}...</p>
+      <a href="/products-services/{{ service.slug }}" class="btn-primary" style="color:var(--navy)">
+        <i class="bi bi-arrow-right"></i> Full Details
+      </a>
+    </div>
+    <div class="column is-6">
+      <p style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.75rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem">
+        <i class="bi bi-list-check"></i> Scope &amp; Features
+      </p>
+      <ul class="feat-list">
+        {% for f in service.features[:5] %}
+        <li><i class="bi bi-check-circle-fill"></i> {{ f }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

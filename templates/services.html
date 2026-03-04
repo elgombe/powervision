@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}Products and Services – Powervision Pvt Ltd{% endblock %}
+
+{% block content %}
+
+<div class="page-hero">
+  <div class="container" style="padding:0 1.5rem">
+    <div class="eyebrow"><span>What We Offer</span></div>
+    <h1 class="sec-title light" style="font-size:clamp(2.5rem,5vw,4rem)">Products and Services</h1>
+    <p style="color:rgba(255,255,255,0.7);max-width:640px;line-height:1.75;font-size:1.05rem">
+      Powervision has extensive experience and expertise in renewable energy, power backup, and power protection solutions for industrial, commercial and domestic clients.
+    </p>
+  </div>
+</div>
+
+<section class="section bg-white">
+  <div class="container">
+
+    {% for svc in services %}
+    <div class="mb-6 pb-6 {% if not loop.last %}{% endif %}" style="{% if not loop.last %}border-bottom:1px solid var(--border);{% endif %}">
+
+      <div class="columns is-vcentered is-variable is-8 {% if loop.index % 2 == 0 %}is-flex-direction-row-reverse{% endif %}">
+
+        <!-- IMAGE BLOCK -->
+        <div class="column is-5">
+          <div style="background:var(--navy);height:340px;display:flex;align-items:center;justify-content:center;position:relative">
+            <i class="bi {{ svc.icon }}" style="font-size:7rem;color:rgba(232,160,32,0.18)"></i>
+            <div style="position:absolute;{% if loop.index % 2 == 0 %}right:0{% else %}left:0{% endif %};bottom:0;background:var(--gold);padding:0.55rem 1.1rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.72rem;color:var(--navy);text-transform:uppercase;letter-spacing:0.1em;display:flex;align-items:center;gap:6px">
+              <i class="bi {{ svc.icon }}"></i> {{ svc.nav_label }}
+            </div>
+          </div>
+        </div>
+
+        <!-- TEXT BLOCK -->
+        <div class="column is-7">
+          <div class="eyebrow"><span>{{ svc.tagline }}</span></div>
+          <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2rem;text-transform:uppercase;color:var(--navy);line-height:1;margin-bottom:1rem">
+            {{ svc.title }}
+          </h2>
+          <p class="mb-4" style="color:var(--text);line-height:1.75">{{ svc.description }}</p>
+
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem">
+            <i class="bi bi-check-circle-fill"></i> Scope &amp; Features
+          </h3>
+          <ul class="feat-list mb-4">
+            {% for f in svc.features %}
+            <li><i class="bi bi-check-circle-fill"></i> {{ f }}</li>
+            {% endfor %}
+          </ul>
+
+          <a href="/products-services/{{ svc.slug }}" class="btn-primary">
+            <i class="bi bi-arrow-right"></i> View Full Details
+          </a>
+        </div>
+
+      </div>
+
+      {% if svc.products %}
+      <div class="mt-5">
+        <p style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text);margin-bottom:1rem">
+          <i class="bi bi-box-seam" style="color:var(--gold)"></i> Products in This Category
+        </p>
+        <div class="columns is-multiline">
+          {% for prod in svc.products %}
+          <div class="column is-3">
+            <div class="prod-chip">
+              <h4>{{ prod.name }}</h4>
+              <p>{{ prod.detail }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+    {% endfor %}
+
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container has-text-centered">
+    <h2>Not Sure Which Solution You Need?</h2>
+    <p>Our engineers will assess your requirements and recommend the right solution at no cost.</p>
+    <a href="/contact" class="btn-dark mt-4"><i class="bi bi-calendar-check"></i> Book a Free Consultation</a>
+  </div>
+</section>
+
+{% endblock %}

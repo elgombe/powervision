@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}The Team – Powervision Pvt Ltd{% endblock %}
+
+{% block content %}
+
+<div class="page-hero">
+  <div class="container" style="padding:0 1.5rem">
+    <div class="eyebrow"><span>The People Behind Powervision</span></div>
+    <h1 class="sec-title light" style="font-size:clamp(2.5rem,5vw,4rem)">The Team</h1>
+    <p style="color:rgba(255,255,255,0.7);max-width:620px;line-height:1.75;font-size:1.05rem">
+      Powervision is a team driven by a shared passion: delivering exceptional power engineering solutions across the industrial, commercial, and domestic landscapes.
+    </p>
+  </div>
+</div>
+
+<!-- TEAM DESCRIPTION -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="columns is-vcentered is-variable is-8">
+      <div class="column is-6">
+        <div class="eyebrow"><span>Our People</span></div>
+        <h2 class="sec-title">Skilled. Dedicated.<br>Passionate.</h2>
+        <p class="mb-4" style="color:var(--text);line-height:1.75">
+          At Powervision, we prioritise building a deep understanding of your unique requirements. We translate that knowledge into high-quality electrical solutions designed for consistent performance and unwavering protection. Our commitment is reflected in every project we undertake, from the largest industrial facility to the most intricate residential fit-out.
+        </p>
+        <p class="mb-4" style="color:var(--text);line-height:1.75">
+          Our success rests on the shoulders of a skilled and dedicated team. Experienced project managers lead the way, supported by a team of certified electricians and a responsive office staff. This collaborative approach ensures every project runs smoothly, from start to finish.
+        </p>
+        <p style="color:var(--text);line-height:1.75">
+          We understand the importance of trust in the world of electrical solutions. That is why every member of our team is committed to transparent communication, professional workmanship, and long-term client relationships.
+        </p>
+      </div>
+      <div class="column is-6">
+        <div style="background:var(--navy);height:380px;display:flex;align-items:center;justify-content:center">
+          <i class="bi bi-people-fill" style="font-size:7rem;color:rgba(232,160,32,0.18)"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM ROLES -->
+<section class="section bg-off">
+  <div class="container">
+    <div class="has-text-centered mb-6">
+      <div class="eyebrow" style="justify-content:center"><span>Who We Are</span></div>
+      <h2 class="sec-title">Team Structure</h2>
+    </div>
+    <div class="columns is-multiline">
+      {% set roles = [
+        ('bi-briefcase-fill','Project Managers','Experienced project managers lead every engagement, ensuring clear timelines, budgets, and client communication from kickoff to handover.'),
+        ('bi-tools','Certified Electricians','Our team of certified electricians brings deep technical expertise to every installation — from residential fit-outs to large industrial systems.'),
+        ('bi-sun','Solar Engineers','Specialists in photovoltaic system design and installation, with hands-on experience across residential, commercial and industrial scales.'),
+        ('bi-headset','Office Staff','A responsive and professional support team ensuring smooth scheduling, procurement, documentation and client communication.'),
+      ] %}
+      {% for icon, title, desc in roles %}
+      <div class="column is-3">
+        <div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);padding:2rem 1.5rem;height:100%;text-align:center">
+          <div style="width:64px;height:64px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem">
+            <i class="bi {{ icon }}" style="font-size:1.6rem;color:var(--gold)"></i>
+          </div>
+          <p style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;color:var(--navy);margin-bottom:0.5rem;letter-spacing:0.04em">{{ title }}</p>
+          <p style="font-size:0.84rem;color:var(--text);line-height:1.65">{{ desc }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section style="background:var(--navy-dk);padding:3rem 0">
+  <div class="container has-text-centered">
+    <i class="bi bi-quote" style="font-size:2rem;color:var(--gold);opacity:0.6;display:block;margin-bottom:0.75rem"></i>
+    <p style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.6rem;color:#fff;letter-spacing:0.03em;text-transform:uppercase">
+      Quality Only Happens When You Care Enough To Do Your Best.
+    </p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container">
+    <div class="columns is-vcentered">
+      <div class="column">
+        <h2>Interested in Joining the Team?</h2>
+        <p>We are always looking for talented engineers and professionals.</p>
+      </div>
+      <div class="column is-narrow">
+        <a href="/contact" class="btn-dark"><i class="bi bi-envelope-fill"></i> Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
