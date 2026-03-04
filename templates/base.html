@@ -99,30 +99,7 @@
     }
     #main-nav .navbar-dropdown hr { margin: 0.25rem 0; }
 
-    .pv-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .pv-logo-mark {
-      width: 46px; height: 46px;
-      background: var(--navy);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .pv-logo-mark i { color: var(--gold); font-size: 1.4rem; }
-    .pv-logo-text strong {
-      display: block;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 1.2rem;
-      color: var(--navy);
-      line-height: 1.1;
-    }
-    .pv-logo-text small {
-      font-size: 0.65rem;
-      font-weight: 600;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
+    .pv-logo { display: flex; align-items: center; text-decoration: none; }
     .btn-nav-cta {
       background: var(--gold) !important;
       color: var(--navy) !important;
@@ -404,7 +381,7 @@
       position: absolute; inset: 0;
       background:
         linear-gradient(135deg, rgba(9,30,68,0.94) 0%, rgba(9,30,68,0.68) 55%, rgba(9,30,68,0.45) 100%),
-        url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1600&q=80') center/cover no-repeat;
+        url("{{ url_for('static', filename='images/image.jpg') }}") center/cover no-repeat;
     }
     .hero-grid {
       position: absolute; inset: 0;
@@ -480,7 +457,7 @@
 <div id="topbar">
   <div class="container">
     <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
-      <a href="mailto:{{ contact.email }}" class="tb-item"><i class="bi bi-envelope-fill"></i> {{ contact.email }}</a>
+      <a href="/cdn-cgi/l/email-protection#bbc0c09bd8d4d5cfdad8cf95ded6dad2d79bc6c6" class="tb-item"><i class="bi bi-envelope-fill"></i> {{ contact.email }}</a>
       <a href="tel:{{ contact.phone.replace(' ','') }}" class="tb-item"><i class="bi bi-telephone-fill"></i> {{ contact.phone }}</a>
     </div>
     <div style="display:flex;gap:12px">
@@ -496,11 +473,7 @@
     <div class="navbar-brand">
       <a href="/" class="navbar-item" style="padding:0.5rem 0.75rem">
         <div class="pv-logo">
-          <div class="pv-logo-mark"><i class="bi bi-lightning-charge-fill"></i></div>
-          <div class="pv-logo-text">
-            <strong>Powervision</strong>
-            <small>Power is Nothing Without Control</small>
-          </div>
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Powervision (Pvt) Ltd" style="height:40px;width:auto;display:block">
         </div>
       </a>
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="pvNav">
@@ -568,11 +541,7 @@
     <div class="columns">
       <div class="column is-4">
         <div class="pv-logo ft-logo">
-          <div class="pv-logo-mark"><i class="bi bi-lightning-charge-fill"></i></div>
-          <div class="pv-logo-text ml-3">
-            <strong>Powervision</strong>
-            <small>Power is Nothing Without Control</small>
-          </div>
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Powervision (Pvt) Ltd" style="height:36px;width:auto;display:block;filter:brightness(0) invert(1)">
         </div>
         <p class="ft-about">Engineering company specialising in Renewable Energy, Power Backup and Power Protection Solutions. Serving industrial, commercial and domestic clients across Zimbabwe for over 20 years.</p>
         <div class="ft-social mt-4">
@@ -602,7 +571,7 @@
 
       <div class="column is-3">
         <p class="ft-head">Contact</p>
-        <a href="mailto:{{ contact.email }}" class="ft-link"><i class="bi bi-envelope"></i> {{ contact.email }}</a>
+        <a href="/cdn-cgi/l/email-protection#077c7c276468697366647329626a666e6b277a7a" class="ft-link"><i class="bi bi-envelope"></i> {{ contact.email }}</a>
         <a href="tel:{{ contact.phone.replace(' ','') }}" class="ft-link"><i class="bi bi-telephone"></i> {{ contact.phone }}</a>
         <span class="ft-link" style="cursor:default"><i class="bi bi-geo-alt"></i> {{ contact.address }}</span>
       </div>
@@ -616,16 +585,8 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.navbar-burger').forEach(b => {
       b.addEventListener('click', () => {
-        document.getElementById(b.dataset.target).classList.toggle('is-active');
-        b.classList.toggle('is-active');
-      });
-    });
-  });
-</script>
-{% block extra_scripts %}{% endblock %}
-</body>
-</html>
+        document.get

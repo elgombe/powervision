@@ -49,8 +49,10 @@
   <div class="container">
     <div class="columns is-vcentered is-variable is-8">
       <div class="column is-5">
-        <div style="background:var(--navy);height:400px;display:flex;align-items:center;justify-content:center;position:relative">
-          <i class="bi bi-buildings" style="font-size:7rem;color:rgba(232,160,32,0.18)"></i>
+        <div style="position:relative">
+          <img src="{{ url_for('static', filename='images/image.jpg') }}"
+               alt="Electrical engineering team at work"
+               style="width:100%;height:400px;object-fit:cover;display:block">
           <div style="position:absolute;bottom:-16px;left:-16px;background:var(--gold);padding:1.1rem 1.4rem">
             <strong style="display:block;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2.2rem;color:var(--navy);line-height:1">20+</strong>
             <span style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy)">Years in Business</span>
@@ -128,19 +130,31 @@
       <div class="eyebrow" style="justify-content:center"><span>Authorised Dealers &amp; Partners</span></div>
       <h2 class="sec-title">Brands We Work With</h2>
     </div>
-    <div class="columns is-multiline">
-      {% set brands = [
-        ('bi-sun','Synsynk'),('bi-sun','Deye'),('bi-sun','Victron Energy'),('bi-sun','Fronius'),
-        ('bi-sun','Alpha Outback'),('bi-sun','Atess'),('bi-battery-charging','Pylontech'),
-        ('bi-battery-charging','FreedomWon'),('bi-battery-charging','WECO'),('bi-battery-charging','Sunsynk'),
-        ('bi-shield-check','Schneider Electric (APC)'),('bi-shield-check','Tripplite'),
-        ('bi-droplet','Lorentz'),('bi-droplet','Grundfos'),('bi-box-seam','Jinko Solar'),('bi-box-seam','Astro Energy'),
-      ] %}
-      {% for icon, brand in brands %}
-      <div class="column is-3">
-        <div style="background:#fff;border:1px solid var(--border);padding:1rem 1.25rem;display:flex;align-items:center;gap:10px">
-          <i class="bi {{ icon }}" style="color:var(--gold);font-size:1.1rem;flex-shrink:0"></i>
-          <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.9rem;color:var(--navy);text-transform:uppercase;letter-spacing:0.04em">{{ brand }}</span>
+    {% set brands = [
+      ('sunsynk.com',        'Sunsynk'),
+      ('deye.com.cn',        'Deye'),
+      ('victronenergy.com',  'Victron Energy'),
+      ('fronius.com',        'Fronius'),
+      ('pylontech.com.cn',   'Pylontech'),
+      ('freedomwon.co.za',   'FreedomWon'),
+      ('schneider-electric.com','Schneider Electric'),
+      ('apc.com',            'APC by Schneider'),
+      ('tripplite.com',      'Tripp Lite'),
+      ('lorentz.com',        'Lorentz'),
+      ('grundfos.com',       'Grundfos'),
+      ('jinkosolar.com',     'Jinko Solar'),
+    ] %}
+    <div class="columns is-multiline is-variable is-3">
+      {% for domain, name in brands %}
+      <div class="column is-2">
+        <div style="background:#fff;border:1px solid var(--border);padding:1.25rem 1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;height:90px;transition:box-shadow 0.2s"
+             onmouseover="this.style.boxShadow='0 4px 20px rgba(13,43,94,0.1)'"
+             onmouseout="this.style.boxShadow='none'">
+          <img src="https://logo.clearbit.com/{{ domain }}"
+               alt="{{ name }}"
+               style="max-height:36px;max-width:100%;object-fit:contain"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span style="display:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.82rem;color:var(--navy);text-transform:uppercase;letter-spacing:0.04em;text-align:center">{{ name }}</span>
         </div>
       </div>
       {% endfor %}
