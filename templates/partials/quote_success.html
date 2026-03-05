@@ -1,5 +1,5 @@
 <div style="text-align:center;padding:3rem 1.5rem" class="fu">
-  <i class="bi bi-check-circle-fill" style="font-size:3.5rem;color:var(--gold);display:block;margin-bottom:1.25rem"></i>
+  <i class="bi bi-check-circle-fill" style="font-size:3.5rem;color:var(--gold);display:block;margin-bottom:1.25rem;animation:bounceIn 0.6s ease both"></i>
   <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2rem;color:var(--navy);text-transform:uppercase;margin-bottom:0.75rem">
     Enquiry Received!
   </h3>
@@ -14,10 +14,10 @@
       <i class="bi bi-info-circle-fill"></i> What Happens Next
     </strong>
     <ol style="margin-top:0.6rem;padding-left:1.25rem;font-size:0.86rem;color:var(--text);line-height:2.1">
-      <li>Our team reviews your enquiry</li>
-      <li>We contact you to discuss your requirements</li>
-      <li>We arrange a free site assessment if required</li>
-      <li>You receive a detailed, no-obligation quote</li>
+      <li style="animation:fadeUp 0.4s 0.1s ease both;opacity:0">Our team reviews your enquiry</li>
+      <li style="animation:fadeUp 0.4s 0.2s ease both;opacity:0">We contact you to discuss your requirements</li>
+      <li style="animation:fadeUp 0.4s 0.3s ease both;opacity:0">We arrange a free site assessment if required</li>
+      <li style="animation:fadeUp 0.4s 0.4s ease both;opacity:0">You receive a detailed, no-obligation quote</li>
     </ol>
   </div>
   <p style="margin-top:1.5rem;font-size:0.84rem;color:var(--text)">
@@ -26,3 +26,11 @@
     or call <a href="tel:+2638677005125" style="color:var(--navy);font-weight:600">+263 8677 005125</a>.
   </p>
 </div>
+<style>
+@keyframes bounceIn {
+  0%   { transform: scale(0); opacity: 0; }
+  60%  { transform: scale(1.2); opacity: 1; }
+  80%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+</style>

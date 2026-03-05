@@ -5,9 +5,9 @@
 
 <div class="page-hero">
   <div class="container" style="padding:0 1.5rem">
-    <div class="eyebrow"><span>What We Offer</span></div>
-    <h1 class="sec-title light" style="font-size:clamp(2.5rem,5vw,4rem)">Products and Services</h1>
-    <p style="color:rgba(255,255,255,0.7);max-width:640px;line-height:1.75;font-size:1.05rem">
+    <div class="eyebrow fu"><span>What We Offer</span></div>
+    <h1 class="sec-title light fu2" style="font-size:clamp(2.5rem,5vw,4rem)">Products and Services</h1>
+    <p class="fu3" style="color:rgba(255,255,255,0.7);max-width:640px;line-height:1.75;font-size:1.05rem">
       Powervision has extensive experience and expertise in renewable energy, power backup, and power protection solutions for industrial, commercial and domestic clients.
     </p>
   </div>
@@ -18,20 +18,18 @@
 
     {% for svc in services %}
 
-    {# Resolve image: prefer svc.image, fall back to loop index number #}
     {% if svc.image %}
       {% set svc_image = svc.image %}
     {% else %}
       {% set svc_image = (loop.index + 10) ~ '.jpg' %}
     {% endif %}
 
-    <div class="mb-6 pb-6" style="{% if not loop.last %}border-bottom:1px solid var(--border);{% endif %}">
+    <div class="mb-6 pb-6 reveal" style="{% if not loop.last %}border-bottom:1px solid var(--border);{% endif %}">
 
       <div class="columns is-vcentered is-variable is-8 {% if loop.index % 2 == 0 %}is-flex-direction-row-reverse{% endif %}">
 
-        <!-- IMAGE BLOCK -->
-        <div class="column is-5">
-          <div style="position:relative">
+        <div class="column is-5 {% if loop.index % 2 == 0 %}reveal-right{% else %}reveal-left{% endif %}">
+          <div style="position:relative" class="img-zoom-wrap">
             <img src="{{ url_for('static', filename='images/' ~ svc_image) }}"
                  alt="{{ svc.title }}"
                  style="width:100%;height:340px;object-fit:cover;display:block">
@@ -41,8 +39,7 @@
           </div>
         </div>
 
-        <!-- TEXT BLOCK -->
-        <div class="column is-7">
+        <div class="column is-7 {% if loop.index % 2 == 0 %}reveal-left{% else %}reveal-right{% endif %}">
           <div class="eyebrow"><span>{{ svc.tagline }}</span></div>
           <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2rem;text-transform:uppercase;color:var(--navy);line-height:1;margin-bottom:1rem">
             {{ svc.title }}
@@ -66,11 +63,11 @@
       </div>
 
       {% if svc.products %}
-      <div class="mt-5">
+      <div class="mt-5 reveal">
         <p style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text);margin-bottom:1rem">
           <i class="bi bi-box-seam" style="color:var(--gold)"></i> Products in This Category
         </p>
-        <div class="columns is-multiline">
+        <div class="columns is-multiline stagger">
           {% for prod in svc.products %}
           <div class="column is-3">
             <div class="prod-chip">
@@ -89,7 +86,7 @@
   </div>
 </section>
 
-<section class="cta-band">
+<section class="cta-band reveal">
   <div class="container has-text-centered">
     <h2>Not Sure Which Solution You Need?</h2>
     <p>Our engineers will assess your requirements and recommend the right solution at no cost.</p>

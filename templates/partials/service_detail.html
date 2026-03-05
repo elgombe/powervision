@@ -2,7 +2,9 @@
   <div class="columns is-vcentered is-variable is-6">
     <div class="column is-6">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem">
-        <i class="bi {{ service.icon }}" style="font-size:2rem;color:var(--gold)"></i>
+        <i class="bi {{ service.icon }}" style="font-size:2rem;color:var(--gold);transition:transform 0.3s"
+           onmouseover="this.style.transform='scale(1.2) rotate(-8deg)'"
+           onmouseout="this.style.transform='scale(1) rotate(0)'"></i>
         <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;text-transform:uppercase;color:var(--navy);line-height:1">{{ service.title }}</h3>
       </div>
       <p style="color:var(--text);line-height:1.75;margin-bottom:1rem">{{ service.description[:300] }}...</p>
