@@ -17,14 +17,23 @@
   <div class="container">
 
     {% for svc in services %}
-    <div class="mb-6 pb-6 {% if not loop.last %}{% endif %}" style="{% if not loop.last %}border-bottom:1px solid var(--border);{% endif %}">
+
+    {# Resolve image: prefer svc.image, fall back to loop index number #}
+    {% if svc.image %}
+      {% set svc_image = svc.image %}
+    {% else %}
+      {% set svc_image = (loop.index + 10) ~ '.jpg' %}
+    {% endif %}
+
+    <div class="mb-6 pb-6" style="{% if not loop.last %}border-bottom:1px solid var(--border);{% endif %}">
 
       <div class="columns is-vcentered is-variable is-8 {% if loop.index % 2 == 0 %}is-flex-direction-row-reverse{% endif %}">
 
         <!-- IMAGE BLOCK -->
         <div class="column is-5">
           <div style="position:relative">
-            <img src="{{ url_for('static', filename='images/image.jpg') }}" alt="{{ svc.title }}"
+            <img src="{{ url_for('static', filename='images/' ~ svc_image) }}"
+                 alt="{{ svc.title }}"
                  style="width:100%;height:340px;object-fit:cover;display:block">
             <div style="position:absolute;{% if loop.index % 2 == 0 %}right:0{% else %}left:0{% endif %};bottom:0;background:var(--gold);padding:0.55rem 1.1rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.72rem;color:var(--navy);text-transform:uppercase;letter-spacing:0.1em;display:flex;align-items:center;gap:6px">
               <i class="bi {{ svc.icon }}"></i> {{ svc.nav_label }}
