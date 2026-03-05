@@ -1,5 +1,7 @@
-{% extends "base.html" %} {% block title %}Powervision Pvt Ltd – Reliable
-Solutions, Unwavering Commitment{% endblock %} {% block content %}
+{% extends "base.html" %}
+{% block title %}Powervision Pvt Ltd – Reliable Solutions, Unwavering Commitment{% endblock %}
+
+{% block content %}
 
 <!-- HERO -->
 <section class="main-hero">
@@ -9,26 +11,17 @@ Solutions, Unwavering Commitment{% endblock %} {% block content %}
   <div class="container hero-inner">
     <div class="columns is-vcentered">
       <div class="column is-7">
-        <div class="eyebrow fu">
-          <span>Welcome to Powervision Pvt Ltd</span>
-        </div>
-        <h1
-          id="hero-heading"
-          aria-label="Reliable Solutions, Unwavering Commitment"
-          style="min-height: 5.5em"
-        >
-          <span class="type-line" id="tl-1"></span><br />
-          <span class="type-line" id="tl-2"></span><br />
-          <span class="type-line type-em" id="tl-3"></span><br />
+        <div class="eyebrow fu"><span>Welcome to Powervision Pvt Ltd</span></div>
+        <h1 id="hero-heading" aria-label="Reliable Solutions, Unwavering Commitment">
+          <span class="type-line" id="tl-1"></span><br>
+          <span class="type-line" id="tl-2"></span><br>
+          <span class="type-line type-em" id="tl-3"></span><br>
           <span class="type-line" id="tl-4"></span>
         </h1>
         <p class="hero-sub fu3">
-          We empower businesses and homes across Zimbabwe with reliable solar
-          and backup power solutions. Our technical expertise extends to
-          comprehensive onsite services, ensuring uninterrupted operation where
-          clean and reliable power is paramount.
+          We empower businesses and homes across Zimbabwe with reliable solar and backup power solutions. Our technical expertise extends to comprehensive onsite services, ensuring uninterrupted operation where clean and reliable power is paramount.
         </p>
-        <div class="fu4" style="display: flex; gap: 1rem; flex-wrap: wrap">
+        <div class="fu4" style="display:flex;gap:1rem;flex-wrap:wrap">
           <a href="/products-services" class="btn-primary">
             <i class="bi bi-grid-fill"></i> Products &amp; Services
           </a>
@@ -56,81 +49,31 @@ Solutions, Unwavering Commitment{% endblock %} {% block content %}
   <div class="container">
     <div class="columns is-vcentered is-variable is-8">
       <div class="column is-5 reveal-left">
-        <div style="position: relative" class="img-zoom-wrap">
-          <img
-            src="{{ url_for('static', filename='images/about-us.jpg') }}"
-            alt="About Powervision"
-            style="
-              width: 100%;
-              height: 400px;
-              object-fit: cover;
-              display: block;
-            "
-          />
-          <div
-            style="
-              position: absolute;
-              bottom: -16px;
-              left: -16px;
-              background: var(--gold);
-              padding: 1.1rem 1.4rem;
-            "
-          >
-            <strong
-              style="
-                display: block;
-                font-family: &quot;Barlow Condensed&quot;, sans-serif;
-                font-weight: 800;
-                font-size: 2.2rem;
-                color: var(--navy);
-                line-height: 1;
-              "
-              >20+</strong
-            >
-            <span
-              style="
-                font-size: 0.7rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.08em;
-                color: var(--navy);
-              "
-              >Years in Business</span
-            >
+        <div style="position:relative" class="img-zoom-wrap">
+          <img src="{{ url_for('static', filename='images/about-us.jpg') }}"
+               alt="About Powervision"
+               style="width:100%;height:400px;object-fit:cover;display:block">
+          <div style="position:absolute;bottom:-16px;left:-16px;background:var(--gold);padding:1.1rem 1.4rem">
+            <strong style="display:block;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2.2rem;color:var(--navy);line-height:1">20+</strong>
+            <span style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy)">Years in Business</span>
           </div>
         </div>
       </div>
       <div class="column is-7 reveal-right">
         <div class="eyebrow"><span>About Us</span></div>
         <h2 class="sec-title">Powervision Pvt Ltd</h2>
-        <p class="mb-4" style="color: var(--text); line-height: 1.75">
-          Powervision is a team driven by a shared passion: delivering
-          exceptional power engineering solutions across the industrial,
-          commercial, and domestic landscapes.
+        <p class="mb-4" style="color:var(--text);line-height:1.75">
+          Powervision is a team driven by a shared passion: delivering exceptional power engineering solutions across the industrial, commercial, and domestic landscapes.
         </p>
-        <p class="mb-4" style="color: var(--text); line-height: 1.75">
-          We prioritise building a deep understanding of your unique
-          requirements, translating that knowledge into high-quality electrical
-          solutions designed for consistent performance and unwavering
-          protection. Our commitment is reflected in every project we undertake,
-          from the largest industrial facility to the most intricate residential
-          fit-out.
+        <p class="mb-4" style="color:var(--text);line-height:1.75">
+          We prioritise building a deep understanding of your unique requirements, translating that knowledge into high-quality electrical solutions designed for consistent performance and unwavering protection. Our commitment is reflected in every project we undertake, from the largest industrial facility to the most intricate residential fit-out.
         </p>
-        <p style="color: var(--text); line-height: 1.75">
-          Our success rests on the shoulders of a skilled and dedicated team —
-          experienced project managers supported by certified electricians and
-          responsive office staff, ensuring every project runs smoothly from
-          start to finish.
+        <p style="color:var(--text);line-height:1.75">
+          Our success rests on the shoulders of a skilled and dedicated team — experienced project managers supported by certified electricians and responsive office staff, ensuring every project runs smoothly from start to finish.
         </p>
-        <div
-          style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap"
-        >
-          <a href="/about" class="btn-primary"
-            ><i class="bi bi-arrow-right"></i> Read More</a
-          >
-          <a href="/the-team" class="btn-dark"
-            ><i class="bi bi-people-fill"></i> Meet the Team</a
-          >
+        <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap">
+          <a href="/about" class="btn-primary"><i class="bi bi-arrow-right"></i> Read More</a>
+          <a href="/the-team" class="btn-dark"><i class="bi bi-people-fill"></i> Meet the Team</a>
         </div>
       </div>
     </div>
@@ -146,20 +89,16 @@ Solutions, Unwavering Commitment{% endblock %} {% block content %}
         <h2 class="sec-title light">Products &amp; Services</h2>
       </div>
       <div class="column is-narrow reveal">
-        <a href="/products-services" class="btn-outline"
-          ><i class="bi bi-arrow-right"></i> View All</a
-        >
+        <a href="/products-services" class="btn-outline"><i class="bi bi-arrow-right"></i> View All</a>
       </div>
     </div>
     <div class="columns is-multiline stagger" id="svc-grid">
       {% for svc in services %}
       <div class="column is-4">
-        <div
-          class="svc-card"
-          hx-get="/htmx/services/{{ svc.id }}"
-          hx-target="#svc-detail"
-          hx-swap="innerHTML"
-        >
+        <div class="svc-card"
+             hx-get="/htmx/services/{{ svc.id }}"
+             hx-target="#svc-detail"
+             hx-swap="innerHTML">
           <i class="bi {{ svc.icon }} svc-icon"></i>
           <p class="svc-title">{{ svc.nav_label }}</p>
           <p class="svc-desc">{{ svc.tagline }}</p>
@@ -173,34 +112,10 @@ Solutions, Unwavering Commitment{% endblock %} {% block content %}
 </section>
 
 <!-- QUALITY QUOTE -->
-<section
-  style="
-    background: var(--navy-dk);
-    padding: 3rem 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-  "
->
+<section style="background:var(--navy-dk);padding:3rem 0;border-top:1px solid rgba(255,255,255,0.06)">
   <div class="container has-text-centered reveal">
-    <i
-      class="bi bi-quote"
-      style="
-        font-size: 2rem;
-        color: var(--gold);
-        opacity: 0.6;
-        display: block;
-        margin-bottom: 0.75rem;
-      "
-    ></i>
-    <p
-      style="
-        font-family: &quot;Barlow Condensed&quot;, sans-serif;
-        font-weight: 700;
-        font-size: 1.6rem;
-        color: #fff;
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-      "
-    >
+    <i class="bi bi-quote" style="font-size:2rem;color:var(--gold);opacity:0.6;display:block;margin-bottom:0.75rem"></i>
+    <p style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.6rem;color:#fff;letter-spacing:0.03em;text-transform:uppercase">
       Quality Only Happens When You Care Enough To Do Your Best.
     </p>
   </div>
@@ -210,45 +125,21 @@ Solutions, Unwavering Commitment{% endblock %} {% block content %}
 <section class="section bg-off py-5">
   <div class="container">
     <div class="has-text-centered mb-5 reveal">
-      <div class="eyebrow" style="justify-content: center">
-        <span>Authorised Dealers &amp; Partners</span>
-      </div>
+      <div class="eyebrow" style="justify-content:center"><span>Authorised Dealers &amp; Partners</span></div>
       <h2 class="sec-title">Brands We Work With</h2>
     </div>
-    {% set brands = [ ('1.png','Brand 1'),('2.png','Brand 2'),('3.png','Brand
-    3'),('4.png','Brand 4'),('5.png','Brand 5'), ('6.png','Brand
-    6'),('7.png','Brand 7'),('8.png','Brand 8'),('9.png','Brand
-    9'),('10.png','Brand 10'), ] %}
+    {% set brands = [
+      ('1.png','Brand 1'),('2.png','Brand 2'),('3.png','Brand 3'),('4.png','Brand 4'),('5.png','Brand 5'),
+      ('6.png','Brand 6'),('7.png','Brand 7'),('8.png','Brand 8'),('9.png','Brand 9'),('10.png','Brand 10'),
+    ] %}
     <div class="columns is-multiline is-variable is-3 stagger">
       {% for filename, name in brands %}
       <div class="column is-2">
-        <div
-          style="
-            background: #fff;
-            border: 1px solid var(--border);
-            padding: 1.25rem 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 90px;
-            transition:
-              box-shadow 0.25s,
-              transform 0.25s;
-          "
-          onmouseover="
-            this.style.boxShadow = '0 4px 20px rgba(13,43,94,0.1)';
-            this.style.transform = 'translateY(-3px)';
-          "
-          onmouseout="
-            this.style.boxShadow = 'none';
-            this.style.transform = 'translateY(0)';
-          "
-        >
-          <img
-            src="{{ url_for('static', filename='images/' ~ filename) }}"
-            alt="{{ name }}"
-            style="max-height: 56px; max-width: 100%; object-fit: contain"
-          />
+        <div style="background:#fff;border:1px solid var(--border);padding:1.25rem 1rem;display:flex;align-items:center;justify-content:center;height:90px;transition:box-shadow 0.25s,transform 0.25s"
+             onmouseover="this.style.boxShadow='0 4px 20px rgba(13,43,94,0.1)';this.style.transform='translateY(-3px)'"
+             onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
+          <img src="{{ url_for('static', filename='images/' ~ filename) }}" alt="{{ name }}"
+               style="max-height:56px;max-width:100%;object-fit:contain">
         </div>
       </div>
       {% endfor %}
@@ -265,18 +156,18 @@ Solutions, Unwavering Commitment{% endblock %} {% block content %}
         <p>Contact us today for a free consultation and quote.</p>
       </div>
       <div class="column is-narrow">
-        <a href="/contact" class="btn-dark"
-          ><i class="bi bi-send-fill"></i> Contact Us Today</a
-        >
+        <a href="/contact" class="btn-dark"><i class="bi bi-send-fill"></i> Contact Us Today</a>
       </div>
     </div>
   </div>
 </section>
 
-{% endblock %} {% block extra_styles %}
+{% endblock %}
+
+{% block extra_styles %}
 <style>
   #hero-heading {
-    font-family: "Barlow Condensed", sans-serif;
+    font-family: 'Barlow Condensed', sans-serif;
     font-weight: 800;
     font-size: clamp(2.8rem, 6.5vw, 5.5rem);
     line-height: 0.95;
@@ -285,71 +176,44 @@ Solutions, Unwavering Commitment{% endblock %} {% block content %}
     opacity: 0;
     animation: hFadeIn 0.01s 0.28s forwards;
   }
-  @keyframes hFadeIn {
-    to {
-      opacity: 1;
-    }
-  }
-  .type-line {
-    display: inline-block;
-  }
-  .type-em {
-    color: var(--gold);
-  }
+  @keyframes hFadeIn { to { opacity:1; } }
+  .type-line     { display:inline-block; }
+  .type-em       { color: var(--gold); }
   .type-line.typing::after {
-    content: "|";
+    content: '|';
     color: var(--gold);
     animation: cur 0.7s step-end infinite;
     margin-left: 2px;
   }
-  @keyframes cur {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-  }
+  @keyframes cur { 0%,100%{opacity:1} 50%{opacity:0} }
 </style>
-{% endblock %} {% block extra_scripts %}
+{% endblock %}
+
+{% block extra_scripts %}
 <script>
-  (function () {
-    const lines = [
-      { id: "tl-1", text: "Reliable" },
-      { id: "tl-2", text: "Solutions," },
-      { id: "tl-3", text: "Unwavering" },
-      { id: "tl-4", text: "Commitment" },
-    ];
-    const START = 600,
-      SPD = 72,
-      PAUSE = 210,
-      LINGER = 380;
-    function typeLine(el, text, done) {
-      el.textContent = "";
-      el.classList.add("typing");
-      let i = 0;
-      (function tick() {
-        if (i < text.length) {
-          el.textContent += text[i++];
-          setTimeout(tick, SPD);
-        } else {
-          setTimeout(() => {
-            el.classList.remove("typing");
-            done && done();
-          }, LINGER);
-        }
-      })();
-    }
-    function run(n) {
-      if (n >= lines.length) return;
-      const el = document.getElementById(lines[n].id);
-      if (!el) return;
-      typeLine(el, lines[n].text, () => setTimeout(() => run(n + 1), PAUSE));
-    }
-    window.addEventListener("DOMContentLoaded", () =>
-      setTimeout(() => run(0), START),
-    );
-  })();
+(function(){
+  const lines=[
+    {id:'tl-1',text:'Reliable'},
+    {id:'tl-2',text:'Solutions,'},
+    {id:'tl-3',text:'Unwavering'},
+    {id:'tl-4',text:'Commitment'},
+  ];
+  const START=600, SPD=72, PAUSE=210, LINGER=380;
+  function typeLine(el,text,done){
+    el.textContent=''; el.classList.add('typing');
+    let i=0;
+    (function tick(){
+      if(i<text.length){ el.textContent+=text[i++]; setTimeout(tick,SPD); }
+      else { setTimeout(()=>{ el.classList.remove('typing'); done&&done(); },LINGER); }
+    })();
+  }
+  function run(n){
+    if(n>=lines.length)return;
+    const el=document.getElementById(lines[n].id);
+    if(!el)return;
+    typeLine(el,lines[n].text,()=>setTimeout(()=>run(n+1),PAUSE));
+  }
+  window.addEventListener('DOMContentLoaded',()=>setTimeout(()=>run(0),START));
+})();
 </script>
 {% endblock %}
