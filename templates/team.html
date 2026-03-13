@@ -4,11 +4,11 @@
 {% block content %}
 
 <div class="page-hero">
-  <div class="container" style="padding:0 1.5rem">
-    <div class="eyebrow fu"><span>The People Behind Powervision</span></div>
-    <h1 class="sec-title light fu2" style="font-size:clamp(2.5rem,5vw,4rem)">The Team</h1>
-    <p class="fu3" style="color:rgba(255,255,255,0.7);max-width:620px;line-height:1.75;font-size:1.05rem">
-      Powervision is a team driven by a shared passion: delivering exceptional power engineering solutions across the industrial, commercial, and domestic landscapes.
+  <div class="container" style="padding:0 2rem">
+    <div class="eyebrow light fu"><span>The People Behind Powervision</span></div>
+    <h1 class="sec-title light fu2" style="font-size:clamp(3rem,6vw,5.5rem)">The Team</h1>
+    <p class="fu3" style="color:rgba(255,255,255,0.5);max-width:600px;line-height:1.8;font-size:1rem;font-weight:400">
+      Powervision is a team driven by a shared passion: delivering exceptional power engineering solutions.
     </p>
   </div>
 </div>
@@ -19,22 +19,22 @@
     <div class="columns is-vcentered is-variable is-8">
       <div class="column is-6 reveal-left">
         <div class="eyebrow"><span>Our People</span></div>
-        <h2 class="sec-title">Skilled. Dedicated.<br>Passionate.</h2>
-        <p class="mb-4" style="color:var(--text);line-height:1.75">
-          At Powervision, we prioritise building a deep understanding of your unique requirements. We translate that knowledge into high-quality electrical solutions designed for consistent performance and unwavering protection. Our commitment is reflected in every project we undertake, from the largest industrial facility to the most intricate residential fit-out.
+        <h2 class="sec-title">Skilled.<br>Dedicated.<br>Passionate.</h2>
+        <p class="mb-4" style="color:var(--text);line-height:1.85;font-size:0.975rem">
+          At Powervision, we prioritise building a deep understanding of your unique requirements. We translate that knowledge into high-quality electrical solutions designed for consistent performance and unwavering protection.
         </p>
-        <p class="mb-4" style="color:var(--text);line-height:1.75">
-          Our success rests on the shoulders of a skilled and dedicated team. Experienced project managers lead the way, supported by a team of certified electricians and a responsive office staff. This collaborative approach ensures every project runs smoothly, from start to finish.
+        <p class="mb-4" style="color:var(--text);line-height:1.85;font-size:0.975rem">
+          Our success rests on the shoulders of a skilled and dedicated team. Experienced project managers lead the way, supported by certified electricians and a responsive office staff, ensuring every project runs smoothly from start to finish.
         </p>
-        <p style="color:var(--text);line-height:1.75">
-          We understand the importance of trust in the world of electrical solutions. That is why every member of our team is committed to transparent communication, professional workmanship, and long-term client relationships.
+        <p style="color:var(--text);line-height:1.85;font-size:0.975rem">
+          We understand the importance of trust in the world of electrical solutions — every member of our team is committed to transparent communication, professional workmanship, and long-term client relationships.
         </p>
       </div>
       <div class="column is-6 reveal-right">
         <div class="img-zoom-wrap">
           <img src="{{ url_for('static', filename='images/image.jpg') }}"
                alt="Powervision engineering team"
-               style="width:100%;height:380px;object-fit:cover;display:block">
+               style="width:100%;height:420px;object-fit:cover;display:block"/>
         </div>
       </div>
     </div>
@@ -42,11 +42,11 @@
 </section>
 
 <!-- TEAM ROLES -->
-<section class="section bg-off">
+<section class="section" style="background:var(--off-white)">
   <div class="container">
     <div class="has-text-centered mb-6 reveal">
-      <div class="eyebrow" style="justify-content:center"><span>Who We Are</span></div>
-      <h2 class="sec-title">Team Structure</h2>
+      <div class="eyebrow" style="display:inline-flex;justify-content:center"><span>Who We Are</span></div>
+      <h2 class="sec-title" style="margin-top:0.5rem">Team Structure</h2>
     </div>
     <div class="columns is-multiline stagger">
       {% set roles = [
@@ -57,18 +57,16 @@
       ] %}
       {% for icon, title, desc in roles %}
       <div class="column is-3">
-        <div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);padding:2rem 1.5rem;height:100%;text-align:center;transition:transform 0.25s,box-shadow 0.25s"
-             onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 30px rgba(13,43,94,0.1)'"
-             onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-          <div style="width:64px;height:64px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;transition:transform 0.3s,background 0.3s"
-               onmouseover="this.style.transform='scale(1.1) rotate(-5deg)';this.style.background='var(--gold)'"
-               onmouseout="this.style.transform='scale(1) rotate(0)';this.style.background='var(--navy)'">
-            <i class="bi {{ icon }}" style="font-size:1.6rem;color:var(--gold);transition:color 0.3s"
-               onmouseover="this.style.color='var(--navy)'"
-               onmouseout="this.style.color='var(--gold)'"></i>
+        <div class="info-card" style="text-align:center">
+          <div style="width:56px;height:56px;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;transition:background var(--transition)"
+               onmouseover="this.style.background='var(--navy)'"
+               onmouseout="this.style.background='var(--blue-pale)'">
+            <i class="bi {{ icon }}" style="font-size:1.4rem;color:var(--navy-2);transition:color var(--transition)"
+               onmouseover="this.style.color='var(--white)'"
+               onmouseout="this.style.color='var(--navy-2)'"></i>
           </div>
-          <p style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;color:var(--navy);margin-bottom:0.5rem;letter-spacing:0.04em">{{ title }}</p>
-          <p style="font-size:0.84rem;color:var(--text);line-height:1.65">{{ desc }}</p>
+          <p style="font-family:var(--font-display);font-weight:600;font-size:1.25rem;color:var(--navy);margin-bottom:0.6rem">{{ title }}</p>
+          <p style="font-size:0.875rem;color:var(--text);line-height:1.75">{{ desc }}</p>
         </div>
       </div>
       {% endfor %}
@@ -77,24 +75,26 @@
 </section>
 
 <!-- QUOTE -->
-<section style="background:var(--navy-dk);padding:3rem 0">
-  <div class="container has-text-centered reveal">
-    <i class="bi bi-quote" style="font-size:2rem;color:var(--gold);opacity:0.6;display:block;margin-bottom:0.75rem"></i>
-    <p style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.6rem;color:#fff;letter-spacing:0.03em;text-transform:uppercase">
+<section style="background:var(--navy);padding:5rem 0;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.06)">
+  <div style="position:absolute;left:2rem;top:50%;transform:translateY(-50%);font-family:var(--font-display);font-size:16rem;font-weight:700;color:rgba(255,255,255,0.03);line-height:1;pointer-events:none;user-select:none">"</div>
+  <div class="container has-text-centered reveal" style="position:relative;z-index:1">
+    <div style="width:40px;height:1px;background:var(--blue-lt);margin:0 auto 2rem"></div>
+    <p style="font-family:var(--font-display);font-weight:600;font-size:clamp(1.6rem,3.5vw,3rem);color:var(--white);letter-spacing:0.01em;max-width:680px;margin:0 auto;line-height:1.15">
       Quality Only Happens When You Care Enough To Do Your Best.
     </p>
+    <div style="width:40px;height:1px;background:var(--blue-lt);margin:2rem auto 0"></div>
   </div>
 </section>
 
 <section class="cta-band reveal">
-  <div class="container">
+  <div class="container" style="position:relative;z-index:1">
     <div class="columns is-vcentered">
       <div class="column">
         <h2>Interested in Joining the Team?</h2>
         <p>We are always looking for talented engineers and professionals.</p>
       </div>
       <div class="column is-narrow">
-        <a href="/contact" class="btn-dark"><i class="bi bi-envelope-fill"></i> Get in Touch</a>
+        <a href="/contact" class="btn-dark">Get in Touch</a>
       </div>
     </div>
   </div>
