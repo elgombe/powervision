@@ -13,16 +13,15 @@
 
   <style>
     /* ═══════════════════════════════════════════
-       DESIGN TOKENS — Redan Light Theme
+       DESIGN TOKENS
     ═══════════════════════════════════════════ */
     :root {
       --white:        #ffffff;
-      --off-white:    #f8f9fc;
-      --gray-1:       #f0f2f7;
-      --gray-2:       #e4e8f0;
-      --gray-3:       #d0d6e4;
-      --border:       rgba(15,30,60,0.10);
-      --border-md:    rgba(15,30,60,0.16);
+      --off-white:    #f5f6fa;
+      --gray-1:       #eff1f6;
+      --gray-2:       #e2e6ef;
+      --border:       rgba(15,30,60,0.09);
+      --border-md:    rgba(15,30,60,0.15);
       --navy:         #0f1e3c;
       --navy-2:       #1a3a6b;
       --navy-3:       #243f72;
@@ -32,7 +31,7 @@
       --text:         #444d60;
       --text-dk:      #0f1e3c;
       --text-lt:      #7a869a;
-      --radius:       2px;
+      --radius:       0px;
       --shadow-sm:    0 1px 4px rgba(15,30,60,0.08);
       --shadow-md:    0 4px 20px rgba(15,30,60,0.10);
       --shadow-lg:    0 12px 40px rgba(15,30,60,0.14);
@@ -57,96 +56,110 @@
     /* ── SCROLL PROGRESS ── */
     #scroll-bar {
       position: fixed; top: 0; left: 0;
-      height: 2px; width: 0%;
-      background: var(--navy);
+      height: 3px; width: 0%;
+      background: var(--blue);
       z-index: 9999;
       transition: width 0.08s linear;
     }
 
-    /* ── TOP BAR ── */
-    #topbar {
-      background: var(--navy);
-      padding: 9px 0;
-      font-size: 0.78rem;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    #topbar .container {
-      display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: wrap; gap: 8px; padding: 0 2rem;
-    }
-    #topbar a, #topbar span {
-      color: rgba(255,255,255,0.55); text-decoration: none;
-      transition: color 0.2s;
-      display: flex; align-items: center; gap: 6px;
-      font-weight: 500; letter-spacing: 0.02em;
-    }
-    #topbar a:hover { color: rgba(255,255,255,0.9); }
-    #topbar i { color: var(--blue-lt); font-size: 0.75rem; }
-    #topbar .tb-right { display: flex; gap: 14px; align-items: center; }
-
-    /* ── NAVBAR ── */
+    /* ── NAVBAR ── (Redan-style: transparent over hero, white on scroll) */
     #main-nav {
-      background: var(--white);
-      position: sticky; top: 0; z-index: 200;
-      border-bottom: 1px solid var(--border);
-      transition: box-shadow var(--transition);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      transition: background var(--transition), box-shadow var(--transition);
+      background: transparent;
     }
-    #main-nav.scrolled { box-shadow: 0 2px 24px rgba(15,30,60,0.10); }
-    #main-nav .navbar-item,
-    #main-nav .navbar-link {
+    #main-nav.scrolled {
+      background: var(--white);
+      box-shadow: 0 2px 24px rgba(15,30,60,0.10);
+    }
+    #main-nav .navbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem; height: 70px;
+    }
+    .nav-logo img { height: 38px; width: auto; display: block; }
+    .nav-logo img.dark { display: none; }
+    #main-nav.scrolled .nav-logo img.light { display: none; }
+    #main-nav.scrolled .nav-logo img.dark  { display: block; }
+
+    .nav-links { display: flex; align-items: center; gap: 0; }
+    .nav-links a, .nav-dropdown-trigger {
       font-family: var(--font-body);
       font-weight: 600; font-size: 0.76rem;
       letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--navy); border-radius: 0;
-      transition: color var(--transition);
-      background: transparent !important;
+      color: rgba(255,255,255,0.85);
+      padding: 0 1.4rem; height: 70px;
+      display: inline-flex; align-items: center;
+      text-decoration: none; background: none; border: none; cursor: pointer;
+      transition: color 0.2s;
+      position: relative;
     }
-    #main-nav .navbar-item:hover,
-    #main-nav .navbar-link:hover,
-    #main-nav .navbar-item.is-active {
-      background: transparent !important;
-      color: var(--blue) !important;
+    .nav-links a::after, .nav-dropdown-trigger::after {
+      content: ''; position: absolute; bottom: 0; left: 1.4rem; right: 1.4rem;
+      height: 2px; background: var(--blue); transform: scaleX(0);
+      transition: transform 0.2s;
     }
-    #main-nav .navbar-link::after { border-color: var(--navy); }
-    #main-nav .navbar-dropdown {
-      border-top: 2px solid var(--navy);
-      border-radius: 0; padding: 0.5rem 0;
-      min-width: 280px; background: var(--white);
-      box-shadow: 0 12px 40px rgba(15,30,60,0.12);
-      animation: dropIn 0.18s ease both;
-      border-left: 1px solid var(--border);
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    @keyframes dropIn {
-      from { opacity:0; transform:translateY(-8px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
-    #main-nav .navbar-dropdown .navbar-item {
-      font-size: 0.76rem; font-weight: 500; color: var(--navy);
-      letter-spacing: 0.08em; text-transform: uppercase;
-      gap: 12px; padding: 0.65rem 1.4rem;
-      transition: color var(--transition), padding-left var(--transition);
-      background: transparent !important;
-    }
-    #main-nav .navbar-dropdown .navbar-item i { color: var(--blue); font-size: 0.9rem; flex-shrink: 0; }
-    #main-nav .navbar-dropdown .navbar-item:hover {
-      background: transparent !important;
-      color: var(--blue) !important;
-      padding-left: 1.8rem;
-    }
+    .nav-links a:hover::after, .nav-dropdown-trigger:hover::after { transform: scaleX(1); }
+    .nav-links a:hover, .nav-dropdown-trigger:hover { color: var(--white); }
+    #main-nav.scrolled .nav-links a,
+    #main-nav.scrolled .nav-dropdown-trigger { color: var(--navy); }
+    #main-nav.scrolled .nav-links a:hover,
+    #main-nav.scrolled .nav-dropdown-trigger:hover { color: var(--blue); }
 
-    .pv-logo { display: flex; align-items: center; text-decoration: none; }
-
-    .btn-nav-cta {
-      background: var(--navy) !important; color: var(--white) !important;
+    .nav-cta {
+      background: var(--white) !important; color: var(--navy) !important;
       font-weight: 700 !important; font-family: var(--font-body) !important;
       letter-spacing: 0.12em !important; text-transform: uppercase !important;
-      border-radius: 0 !important; padding: 0.65rem 1.75rem !important;
-      font-size: 0.74rem !important;
-      transition: background var(--transition) !important;
+      padding: 0.65rem 1.75rem !important; font-size: 0.74rem !important;
+      border: none !important; border-radius: 50px !important; cursor: pointer;
+      transition: background 0.2s, color 0.2s !important;
     }
-    .btn-nav-cta:hover { background: var(--blue) !important; color: var(--white) !important; }
+    .nav-cta:hover { background: var(--navy) !important; color: var(--white) !important; }
+    #main-nav.scrolled .nav-cta { background: var(--navy) !important; color: var(--white) !important; }
+    #main-nav.scrolled .nav-cta:hover { background: var(--blue) !important; }
+
+    /* Dropdown */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-menu {
+      position: absolute; top: 100%; left: 0;
+      background: var(--white); min-width: 260px;
+      border-top: 2px solid var(--navy); border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border); border-right: 1px solid var(--border);
+      box-shadow: 0 12px 40px rgba(15,30,60,0.12);
+      opacity: 0; pointer-events: none; transform: translateY(-8px);
+      transition: opacity 0.18s, transform 0.18s;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu {
+      opacity: 1; pointer-events: auto; transform: translateY(0);
+    }
+    .nav-dropdown-menu a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 0.65rem 1.4rem; height: auto;
+      font-size: 0.76rem; font-weight: 500; color: var(--navy);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border-bottom: 1px solid var(--border); transition: padding-left 0.18s, color 0.18s;
+    }
+    .nav-dropdown-menu a::after { display: none; }
+    .nav-dropdown-menu a:last-child { border-bottom: none; }
+    .nav-dropdown-menu a:hover { color: var(--blue); padding-left: 1.9rem; background: transparent; }
+    .nav-dropdown-menu a i { color: var(--blue); font-size: 0.85rem; }
+    .nav-dropdown-divider { height: 1px; background: var(--border); margin: 4px 0; }
+
+    /* Mobile burger */
+    .nav-burger { display: none; }
+    @media (max-width: 1023px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-burger {
+        display: flex; align-items: center; justify-content: center;
+        width: 44px; height: 44px; background: none; border: 1px solid rgba(255,255,255,0.3);
+        cursor: pointer; flex-direction: column; gap: 5px; padding: 0;
+      }
+      #main-nav.scrolled .nav-burger { border-color: var(--border-md); }
+      .nav-burger span {
+        display: block; width: 22px; height: 1.5px; background: var(--white); transition: 0.2s;
+      }
+      #main-nav.scrolled .nav-burger span { background: var(--navy); }
+      #main-nav .navbar-inner { padding: 0 1.5rem; }
+    }
 
     /* ── TYPOGRAPHY ── */
     .sec-title {
@@ -210,7 +223,7 @@
       text-decoration: none; border: none; border-radius: 0; cursor: pointer;
       transition: background var(--transition);
     }
-    .btn-accent:hover { background: var(--blue-lt); color: var(--white); }
+    .btn-accent:hover { background: var(--navy); color: var(--white); }
 
     .btn-dark {
       display: inline-flex; align-items: center; gap: 8px;
@@ -230,13 +243,8 @@
       padding: 2.25rem 2rem; cursor: pointer; position: relative;
       height: 100%; transition: border-bottom-color var(--transition), box-shadow var(--transition);
     }
-    .svc-card:hover {
-      border-bottom-color: var(--navy);
-      box-shadow: var(--shadow-md);
-    }
-    .svc-card .svc-icon {
-      font-size: 1.6rem; color: var(--navy-2); margin-bottom: 1.5rem; display: block;
-    }
+    .svc-card:hover { border-bottom-color: var(--navy); box-shadow: var(--shadow-md); }
+    .svc-card .svc-icon { font-size: 1.6rem; color: var(--navy-2); margin-bottom: 1.5rem; display: block; }
     .svc-card .svc-title {
       font-family: var(--font-display); font-weight: 600;
       font-size: 1.35rem; color: var(--navy);
@@ -270,6 +278,38 @@
       letter-spacing: 0.14em; text-transform: uppercase; margin-top: 0.4rem;
     }
 
+    /* ── REDAN-STYLE STAT MOSAIC ── */
+    .stat-mosaic {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .stat-mosaic-tile {
+      position: relative; overflow: hidden;
+      aspect-ratio: 1 / 0.85;
+    }
+    .stat-mosaic-tile img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.6s ease;
+    }
+    .stat-mosaic-tile:hover img { transform: scale(1.05); }
+    .stat-mosaic-tile .tile-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,20,45,0.75) 0%, transparent 60%);
+    }
+    .stat-mosaic-tile .tile-label {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+    }
+    .stat-mosaic-tile .tile-val {
+      font-family: var(--font-condensed); font-weight: 800;
+      font-size: 3rem; color: var(--white); line-height: 1; letter-spacing: -0.02em;
+    }
+    .stat-mosaic-tile .tile-txt {
+      font-size: 0.68rem; color: rgba(255,255,255,0.7);
+      font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
     /* ── FEATURES LIST ── */
     .feat-list { list-style: none; padding: 0; margin: 0; }
     .feat-list li {
@@ -294,21 +334,16 @@
     .prod-chip {
       background: var(--white); border: 1px solid var(--border); border-radius: 0;
       padding: 1.5rem 1.25rem; height: 100%;
-      transition: border-color var(--transition), box-shadow var(--transition);
-      position: relative;
+      transition: border-color var(--transition), box-shadow var(--transition); position: relative;
     }
     .prod-chip::after {
       content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 2px; background: var(--navy);
-      transform: scaleX(0); transform-origin: left;
+      height: 2px; background: var(--navy); transform: scaleX(0); transform-origin: left;
       transition: transform 0.3s ease;
     }
     .prod-chip:hover { box-shadow: var(--shadow-sm); }
     .prod-chip:hover::after { transform: scaleX(1); }
-    .prod-chip h4 {
-      font-family: var(--font-display); font-weight: 600;
-      font-size: 1.05rem; color: var(--navy); margin-bottom: 0.4rem;
-    }
+    .prod-chip h4 { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; color: var(--navy); margin-bottom: 0.4rem; }
     .prod-chip p { font-size: 0.82rem; color: var(--text); line-height: 1.6; }
 
     /* ── INFO CARD ── */
@@ -326,52 +361,207 @@
     }
     .info-card:hover .info-card-icon { background: var(--navy); color: var(--white); }
 
-    /* ── PAGE HERO ── */
-    .page-hero {
-      background: var(--navy); padding: 6rem 0 5rem;
-      position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.06);
+    /* ── REDAN-STYLE TAB CARDS (History / Mission / Vision / Values) ── */
+    .tab-cards-row {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
     }
-    .page-hero::before {
-      content: ''; position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 80px 80px;
-      pointer-events: none;
+    .tab-card {
+      padding: 2.5rem 2rem 3rem;
+      border-right: 1px solid var(--border);
+      position: relative;
+      transition: background var(--transition);
+      cursor: default;
     }
-    .page-hero::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 1px; background: linear-gradient(90deg, var(--blue) 0%, transparent 60%);
+    .tab-card:last-child { border-right: none; }
+    .tab-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: var(--border); transition: background 0.25s;
+    }
+    .tab-card:hover::after { background: var(--navy); }
+    .tab-card .tc-icon-wrap {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--gray-1); display: flex; align-items: center;
+      justify-content: center; margin-bottom: 2rem;
+      transition: background 0.25s;
+    }
+    .tab-card:hover .tc-icon-wrap { background: var(--navy); }
+    .tab-card .tc-icon-wrap i { font-size: 1.2rem; color: var(--navy-2); transition: color 0.25s; }
+    .tab-card:hover .tc-icon-wrap i { color: var(--white); }
+    .tab-card .tc-label {
+      font-family: var(--font-body); font-weight: 700; font-size: 0.68rem;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-lt);
+      margin-bottom: 1.5rem;
+    }
+    .tab-card .tc-body {
+      font-size: 0.9rem; color: var(--text); line-height: 1.75; margin-bottom: 1.75rem;
+    }
+    .tab-card .tc-link {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--navy); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+      transition: gap 0.2s, color 0.2s;
+    }
+    .tab-card .tc-link:hover { gap: 10px; color: var(--blue); }
+    @media (max-width: 768px) {
+      .tab-cards-row { grid-template-columns: 1fr 1fr; }
+      .tab-card { border-bottom: 1px solid var(--border); }
+    }
+    @media (max-width: 480px) {
+      .tab-cards-row { grid-template-columns: 1fr; }
     }
 
-    /* ── MAIN HERO ── */
+    /* ── PAGE HERO (Redan-style: full-bleed photo) ── */
+    .page-hero {
+      position: relative; min-height: 65vh;
+      display: flex; align-items: flex-end;
+      overflow: hidden; padding-bottom: 4rem;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(10,20,45,0.55) 0%, rgba(10,20,45,0.75) 100%);
+      z-index: 1;
+    }
+    .page-hero-img {
+      position: absolute; inset: 0;
+      background: var(--navy);
+      z-index: 0;
+    }
+    .page-hero-img img {
+      width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.7;
+    }
+    .page-hero-content {
+      position: relative; z-index: 2;
+      width: 100%; padding: 0 3rem;
+    }
+
+    /* ── MAIN HERO (Redan-style: full-bleed sliding photo) ── */
     .main-hero {
-      position: relative; min-height: 92vh;
+      position: relative; min-height: 100vh;
       display: flex; align-items: center;
-      background: var(--navy); overflow: hidden;
+      overflow: hidden;
     }
-    .hero-bg {
+    .hero-slides { position: absolute; inset: 0; }
+    .hero-slide {
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 65% 40%, rgba(37,99,235,0.14) 0%, transparent 65%);
-      pointer-events: none;
+      opacity: 0; transition: opacity 1.2s ease;
     }
-    .hero-grid {
+    .hero-slide.active { opacity: 1; }
+    .hero-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-slide-overlay {
       position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
-      background-size: 80px 80px;
-      pointer-events: none;
+      background: linear-gradient(to right, rgba(10,20,45,0.78) 40%, rgba(10,20,45,0.35) 100%);
     }
-    .hero-inner { position: relative; z-index: 2; width: 100%; padding: 6rem 2rem; }
+    .hero-inner { position: relative; z-index: 2; width: 100%; padding: 8rem 3rem 6rem; }
     .hero-badge {
       position: absolute; bottom: -16px; right: -16px;
       background: var(--blue); padding: 1.25rem 1.6rem; border-radius: 0;
     }
+    /* Slide nav arrows */
+    .hero-arrow {
+      position: absolute; z-index: 10; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px; border: 1px solid rgba(255,255,255,0.35);
+      background: transparent; color: rgba(255,255,255,0.7);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.2rem;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .hero-arrow:hover { background: rgba(255,255,255,0.15); color: var(--white); border-color: rgba(255,255,255,0.7); }
+    .hero-arrow-left { left: 2rem; border-radius: 50%; }
+    .hero-arrow-right { right: 2rem; border-radius: 50%; }
+
+    /* ── ABOUT-US CIRCLE NAV (Redan hero bottom bar) ── */
+    .hero-tab-strip {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
+      background: rgba(255,255,255,0.97);
+      display: flex;
+    }
+    .hero-tab-item {
+      flex: 1; padding: 1.4rem 2rem;
+      display: flex; align-items: center; gap: 1rem;
+      border-right: 1px solid var(--border);
+      cursor: pointer; transition: background 0.2s;
+      text-decoration: none;
+    }
+    .hero-tab-item:last-child { border-right: none; }
+    .hero-tab-item:hover { background: var(--gray-1); }
+    .hero-tab-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--gray-1); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background 0.2s;
+    }
+    .hero-tab-item:hover .hero-tab-icon { background: var(--navy); }
+    .hero-tab-icon i { font-size: 1rem; color: var(--navy-2); transition: color 0.2s; }
+    .hero-tab-item:hover .hero-tab-icon i { color: var(--white); }
+    .hero-tab-label {
+      font-family: var(--font-body); font-weight: 700; font-size: 0.7rem;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--navy);
+      margin-bottom: 3px;
+    }
+    .hero-tab-desc {
+      font-size: 0.78rem; color: var(--text-lt); line-height: 1.4;
+    }
+
+    /* ── TESTIMONIAL ── */
+    .testimonial-section {
+      background: var(--navy); padding: 5rem 0;
+      position: relative; overflow: hidden;
+    }
+    .testimonial-section::before {
+      content: '"'; position: absolute; left: 2rem; top: 50%;
+      transform: translateY(-50%); font-family: var(--font-display);
+      font-size: 16rem; font-weight: 700; color: rgba(255,255,255,0.03);
+      line-height: 1; pointer-events: none; user-select: none;
+    }
+    .testimonial-slide { display: none; }
+    .testimonial-slide.active { display: block; }
+    .testimonial-text {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: clamp(1.4rem, 2.5vw, 2.2rem); color: var(--white);
+      line-height: 1.35; text-align: center; max-width: 680px; margin: 0 auto;
+    }
+    .testimonial-author {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; margin-top: 2rem;
+    }
+    .testimonial-avatar {
+      width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+    .testimonial-name {
+      font-size: 0.8rem; color: rgba(255,255,255,0.7);
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .testimonial-role { font-size: 0.72rem; color: rgba(255,255,255,0.4); }
+    .testimonial-nav {
+      display: flex; justify-content: center; gap: 8px; margin-top: 2rem;
+    }
+    .testimonial-dot {
+      width: 8px; height: 1px; background: rgba(255,255,255,0.25);
+      cursor: pointer; transition: background 0.2s, width 0.2s;
+    }
+    .testimonial-dot.active { background: var(--white); width: 24px; }
+
+    /* ── NEWS / ARTICLES LIST (Redan style) ── */
+    .news-section { padding: 6rem 0; background: var(--white); }
+    .news-list-item {
+      display: grid; grid-template-columns: auto 1fr auto;
+      align-items: start; gap: 2rem;
+      padding: 2rem 0; border-bottom: 1px solid var(--border);
+    }
+    .news-list-item:first-child { border-top: 1px solid var(--border); }
+    .news-date { font-size: 0.68rem; color: var(--text-lt); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; min-width: 60px; padding-top: 4px; }
+    .news-title { font-family: var(--font-display); font-weight: 500; font-size: 1.4rem; color: var(--navy); line-height: 1.2; margin-bottom: 0.5rem; }
+    .news-title a { color: inherit; text-decoration: none; transition: color 0.2s; }
+    .news-title a:hover { color: var(--blue); }
+    .news-excerpt { font-size: 0.875rem; color: var(--text); line-height: 1.7; }
+    .news-arrow { font-size: 1.2rem; color: var(--border-md); transition: color 0.2s, transform 0.2s; padding-top: 4px; }
+    .news-list-item:hover .news-arrow { color: var(--navy); transform: translateX(4px); }
 
     /* ── CTA BAND ── */
     .cta-band {
-      background: var(--navy); padding: 4rem 1.5rem;
+      background: var(--navy); padding: 4rem 3rem;
       position: relative; overflow: hidden;
     }
     .cta-band::before {
@@ -439,6 +629,26 @@
     .pv-form .select::after { border-color: var(--navy-2); }
     .pv-form .icon { color: var(--text-lt) !important; }
 
+    /* ── SOCIAL CONNECT STRIP (Redan contact page) ── */
+    .social-strip {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 2px;
+      margin-top: 3rem;
+    }
+    .social-tile {
+      position: relative; overflow: hidden; aspect-ratio: 1/1;
+      cursor: pointer;
+    }
+    .social-tile img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; filter: grayscale(20%); }
+    .social-tile:hover img { transform: scale(1.08); filter: grayscale(0%); }
+    .social-tile-overlay {
+      position: absolute; inset: 0;
+      background: rgba(10,20,45,0.45);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.25s;
+    }
+    .social-tile:hover .social-tile-overlay { background: rgba(37,99,235,0.55); }
+    .social-tile-overlay i { font-size: 2rem; color: rgba(255,255,255,0.85); }
+
     /* ── FOOTER ── */
     #footer {
       background: var(--navy); padding: 5rem 0 2rem;
@@ -479,11 +689,15 @@
 
     /* ── SECTION ── */
     .section { padding: 6rem 1.5rem; }
-    @media (max-width:768px) {
+    @media (max-width: 768px) {
       .section { padding: 3.5rem 1.25rem; }
-      .page-hero { padding: 4rem 0 3.5rem; }
+      .page-hero { min-height: 50vh; padding-bottom: 3rem; }
+      .page-hero-content { padding: 0 1.5rem; }
       .main-hero { min-height: auto; }
-      .hero-inner { padding: 5rem 1.25rem 4rem; }
+      .hero-inner { padding: 8rem 1.5rem 5rem; }
+      .hero-tab-strip { position: static; flex-wrap: wrap; }
+      .hero-tab-item { flex: 0 0 50%; }
+      .stat-mosaic { grid-template-columns: 1fr 1fr; }
     }
 
     /* ── UTILITIES ── */
@@ -498,113 +712,67 @@
       border: 1px solid rgba(37,99,235,0.2);
     }
 
-    /* Bulma overrides */
-    .navbar-divider { background: var(--border) !important; margin: 4px 0 !important; height: 1px !important; }
-
-    /* Hero stats strip */
-    .hero-stats {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04); overflow: hidden;
-    }
-
-    @keyframes fadeUp { to { opacity:1; transform:none; } }
-
-    /* Sections alternate bg */
     .bg-off    { background: var(--off-white); }
     .bg-gray-1 { background: var(--gray-1); }
     .bg-navy   { background: var(--navy); }
     .bg-white  { background: var(--white); }
+
+    /* Bulma overrides */
+    .navbar-divider { background: var(--border) !important; margin: 4px 0 !important; height: 1px !important; }
+    .container { max-width: 1280px !important; }
   </style>
   {% block extra_styles %}{% endblock %}
 </head>
 <body>
   <div id="scroll-bar"></div>
 
-  <!-- TOP BAR -->
-  <div id="topbar">
-    <div class="container">
-      <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
-        <a href="mailto:{{ contact.email }}">
-          <i class="bi bi-envelope-fill"></i> {{ contact.email }}
-        </a>
-        <a href="tel:{{ contact.phone.replace(' ','') }}">
-          <i class="bi bi-telephone-fill"></i> {{ contact.phone }}
-        </a>
-      </div>
-      <div class="tb-right">
-        <a href="{{ contact.facebook }}" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
-        <a href="{{ contact.linkedin }}" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
-      </div>
-    </div>
-  </div>
+  <!-- NAVBAR (fixed, transparent → white on scroll) -->
+  <nav id="main-nav" role="navigation" aria-label="main navigation">
+    <div class="navbar-inner">
+      <a class="nav-logo" href="/">
+        <!-- light logo shown on dark hero -->
+        <img class="light" src="{{ url_for('static', filename='images/logo.png') }}"
+             alt="Powervision (Pvt) Ltd"
+             style="height:38px;width:auto;filter:brightness(0) invert(1)"/>
+        <!-- dark logo shown on white bg -->
+        <img class="dark" src="{{ url_for('static', filename='images/logo.png') }}"
+             alt="Powervision (Pvt) Ltd"
+             style="height:38px;width:auto"/>
+      </a>
 
-  <!-- NAVBAR -->
-  <nav id="main-nav" class="navbar" role="navigation" aria-label="main navigation">
-    <div class="container" style="padding:0 2rem">
-      <div class="navbar-brand">
-        <a class="navbar-item pv-logo" href="/" style="padding-left:0">
-          <img src="{{ url_for('static', filename='images/logo.png') }}"
-               alt="Powervision (Pvt) Ltd"
-               style="height:36px;width:auto;display:block"/>
-        </a>
-        <a role="button" class="navbar-burger" data-target="pv-menu"
-           aria-label="menu" aria-expanded="false" style="color:var(--navy)">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
+      <div class="nav-links">
+        <a href="/" class="{% if request.path == '/' %}is-active{% endif %}">Home</a>
 
-      <div id="pv-menu" class="navbar-menu">
-        <div class="navbar-start" style="align-items:center;gap:0">
-          <a href="/" class="navbar-item {% if request.path == '/' %}is-active{% endif %}">Home</a>
-
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link {% if '/about' in request.path or '/the-team' in request.path %}is-active{% endif %}">
-              About
-            </a>
-            <div class="navbar-dropdown">
-              <a href="/about" class="navbar-item"><i class="bi bi-building"></i> About Us</a>
-              <a href="/the-team" class="navbar-item"><i class="bi bi-people-fill"></i> The Team</a>
-            </div>
-          </div>
-
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link {% if 'products-services' in request.path %}is-active{% endif %}">
-              Products &amp; Services
-            </a>
-            <div class="navbar-dropdown">
-              {% set svc_links = [
-                ('alternative-green-energy','bi-sun','Alternative and Green Energy'),
-                ('electrical-installations','bi-lightning-charge','Electrical Installations'),
-                ('backup-standby-power','bi-battery-charging','Back-Up and Standby Power'),
-                ('power-system-protection','bi-shield-check','Power System Protection'),
-                ('value-added-services','bi-tools','Value Added Services'),
-              ] %}
-              <a href="/products-services" class="navbar-item"><i class="bi bi-grid-fill"></i> All Services</a>
-              <hr class="navbar-divider"/>
-              {% for slug, icon, label in svc_links %}
-              <a href="/products-services/{{ slug }}" class="navbar-item">
-                <i class="bi {{ icon }}"></i> {{ label }}
-              </a>
-              {% endfor %}
-              <hr class="navbar-divider"/>
-              <a href="/products-services/products" class="navbar-item"><i class="bi bi-box-seam"></i> Products</a>
-            </div>
-          </div>
-
-          <a href="/contact" class="navbar-item {% if request.path == '/contact' %}is-active{% endif %}">
-            Contact Us
-          </a>
-        </div>
-
-        <div class="navbar-end">
-          <div class="navbar-item" style="padding-right:0">
-            <a href="/contact" class="btn-nav-cta">Get a Quote</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger">About <i class="bi bi-chevron-down" style="font-size:0.6rem;margin-left:4px"></i></button>
+          <div class="nav-dropdown-menu">
+            <a href="/about"><i class="bi bi-building"></i> About Us</a>
+            <a href="/the-team"><i class="bi bi-people-fill"></i> The Team</a>
           </div>
         </div>
+
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger">Products &amp; Services <i class="bi bi-chevron-down" style="font-size:0.6rem;margin-left:4px"></i></button>
+          <div class="nav-dropdown-menu">
+            <a href="/products-services"><i class="bi bi-grid-fill"></i> All Services</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="/products-services/alternative-green-energy"><i class="bi bi-sun"></i> Alternative and Green Energy</a>
+            <a href="/products-services/electrical-installations"><i class="bi bi-lightning-charge"></i> Electrical Installations</a>
+            <a href="/products-services/backup-standby-power"><i class="bi bi-battery-charging"></i> Back-Up and Standby Power</a>
+            <a href="/products-services/power-system-protection"><i class="bi bi-shield-check"></i> Power System Protection</a>
+            <a href="/products-services/value-added-services"><i class="bi bi-tools"></i> Value Added Services</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="/products-services/products"><i class="bi bi-box-seam"></i> Products</a>
+          </div>
+        </div>
+
+        <a href="/contact">Contact Us</a>
       </div>
+
+      <a href="/contact" class="nav-cta">Contact Us</a>
+      <button class="nav-burger" id="nav-burger" aria-label="menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -612,7 +780,7 @@
 
   <!-- FOOTER -->
   <footer id="footer">
-    <div class="container" style="padding:0 2rem">
+    <div class="container" style="padding:0 3rem">
       <div class="columns">
         <div class="column is-4">
           <div class="pv-logo ft-logo">
@@ -652,7 +820,7 @@
 
         <div class="column is-3">
           <p class="ft-head">Contact</p>
-          <a href="mailto:{{ contact.email }}" class="ft-link">
+          <a href="/cdn-cgi/l/email-protection#87fcfca7e4e8e9f3e6e4f3a9e2eae6eeeba7fafa" class="ft-link">
             <i class="bi bi-envelope" style="color:var(--blue-lt);margin-right:8px"></i> {{ contact.email }}
           </a>
           <a href="tel:{{ contact.phone.replace(' ','') }}" class="ft-link">
@@ -672,29 +840,30 @@
     </div>
   </footer>
 
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Navbar burger
-      document.querySelectorAll('.navbar-burger').forEach(b => {
-        b.addEventListener('click', () => {
-          const target = document.getElementById(b.dataset.target);
-          b.classList.toggle('is-active');
-          target && target.classList.toggle('is-active');
-        });
-      });
-
-      // Scroll progress
+      // Scroll progress bar
       const bar = document.getElementById('scroll-bar');
       window.addEventListener('scroll', () => {
         const max = document.body.scrollHeight - window.innerHeight;
         bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
       }, { passive: true });
 
-      // Sticky nav shadow
+      // Sticky nav: transparent → white
       const nav = document.getElementById('main-nav');
-      window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 40);
-      }, { passive: true });
+      const checkScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
+      window.addEventListener('scroll', checkScroll, { passive: true });
+      checkScroll();
+
+      // Mobile burger (simple toggle)
+      const burger = document.getElementById('nav-burger');
+      if (burger) {
+        burger.addEventListener('click', () => {
+          // For mobile — basic scroll lock toggle or drawer could be added here
+          document.body.classList.toggle('nav-open');
+        });
+      }
 
       // Scroll reveal
       const io = new IntersectionObserver(entries => {
@@ -732,15 +901,52 @@
         counterIO.observe(el);
       });
 
+      // Hero slideshow
+      const slides = document.querySelectorAll('.hero-slide');
+      if (slides.length > 1) {
+        let current = 0;
+        const goTo = n => {
+          slides[current].classList.remove('active');
+          current = (n + slides.length) % slides.length;
+          slides[current].classList.add('active');
+        };
+        setInterval(() => goTo(current + 1), 6000);
+        document.querySelector('.hero-arrow-left')?.addEventListener('click', () => goTo(current - 1));
+        document.querySelector('.hero-arrow-right')?.addEventListener('click', () => goTo(current + 1));
+      }
+
+      // Testimonial slider
+      const tSlides = document.querySelectorAll('.testimonial-slide');
+      const tDots   = document.querySelectorAll('.testimonial-dot');
+      if (tSlides.length > 1) {
+        let tCur = 0;
+        const tGoTo = n => {
+          tSlides[tCur].classList.remove('active');
+          tDots[tCur]?.classList.remove('active');
+          tCur = (n + tSlides.length) % tSlides.length;
+          tSlides[tCur].classList.add('active');
+          tDots[tCur]?.classList.add('active');
+        };
+        tDots.forEach((d,i) => d.addEventListener('click', () => tGoTo(i)));
+        setInterval(() => tGoTo(tCur + 1), 5500);
+      }
+
       // HTMX swap animation
       document.body.addEventListener('htmx:afterSwap', () => {
         document.querySelectorAll('#svc-detail .detail-panel, #form-container .fu').forEach(el => {
-          el.style.animation = 'none'; void el.offsetHeight;
-          el.style.animation = 'fadeUp 0.45s ease both';
+          el.style.animation = 'none';
+          el.offsetHeight;
+          el.style.animation = '';
         });
+        const io2 = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); io2.unobserve(e.target); }
+          });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#svc-detail .reveal,#svc-detail .stagger,#svc-detail .feat-list')
+          .forEach(el => io2.observe(el));
       });
     });
   </script>
-  {% block extra_scripts %}{% endblock %}
 </body>
 </html>

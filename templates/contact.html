@@ -3,80 +3,112 @@
 
 {% block content %}
 
+<!-- FULL-BLEED PAGE HERO -->
 <div class="page-hero">
-  <div class="container" style="padding:0 2rem">
+  <div class="page-hero-img">
+    <img src="{{ url_for('static', filename='images/image.jpg') }}" alt="Contact Powervision"/>
+  </div>
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
     <div class="eyebrow light fu"><span>Get In Touch</span></div>
     <h1 class="sec-title light fu2" style="font-size:clamp(3rem,6vw,5.5rem)">Contact Us</h1>
-    <p class="fu3" style="color:rgba(255,255,255,0.5);max-width:540px;line-height:1.8;font-size:1rem;font-weight:400">
+    <p class="fu3" style="color:rgba(255,255,255,0.55);max-width:540px;line-height:1.8;font-size:1rem;font-weight:400">
       Ready to discuss your power engineering requirements? Our team is here to help.
     </p>
   </div>
 </div>
 
-<section class="section bg-white">
-  <div class="container">
-    <div class="columns is-variable is-8">
-
-      <!-- CONTACT INFO -->
-      <div class="column is-4 reveal-left">
-        <div class="eyebrow"><span>Our Details</span></div>
-        <h2 style="font-family:var(--font-display);font-weight:600;font-size:2.4rem;color:var(--navy);line-height:1.1;margin-bottom:1rem">
-          Let's Talk Power Engineering
+<!-- SOCIAL PHOTO STRIP + INTRO -->
+<section style="background:var(--white);padding:5rem 0 0">
+  <div class="container" style="padding:0 3rem">
+    <div class="columns is-vcentered is-variable is-4 mb-6">
+      <div class="column is-6 reveal-left">
+        <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-lt);margin-bottom:1.5rem">— Connect With Us</div>
+        <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(2rem,3.5vw,3.2rem);color:var(--navy);line-height:1;margin-bottom:1rem">
+          Let's get to<br><em>know each other</em>
         </h2>
-        <p style="color:var(--text);line-height:1.85;margin-bottom:2.5rem;font-size:0.95rem">
+        <p style="color:var(--text);line-height:1.85;font-size:0.9rem">
           Whether you have a specific project in mind or just want to explore your options, our engineers are happy to advise — completely free of charge.
         </p>
-
-        {% set details = [
-          ('bi-envelope-fill','Email', contact.email, 'mailto:' ~ contact.email),
-          ('bi-telephone-fill','Phone', contact.phone, 'tel:' ~ contact.phone.replace(' ','')),
-          ('bi-geo-alt-fill','Address', contact.address, '#'),
-        ] %}
-        {% for icon, label, value, href in details %}
-        <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:1.75rem;opacity:0;transform:translateX(-16px);animation:slideInLeft 0.5s {{ loop.index * 0.12 }}s ease forwards">
-          <div style="width:42px;height:42px;background:var(--blue-pale);border:1px solid rgba(37,99,235,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s"
-               onmouseover="this.style.background='var(--navy)'"
-               onmouseout="this.style.background='var(--blue-pale)'">
-            <i class="bi {{ icon }}" style="color:var(--navy-2);transition:color 0.2s;font-size:0.85rem"
-               onmouseover="this.style.color='var(--white)'"
-               onmouseout="this.style.color='var(--navy-2)'"></i>
+      </div>
+      <div class="column is-6 reveal-right">
+        <!-- Social photo tiles (Redan-style) -->
+        <div class="social-strip">
+          <div class="social-tile">
+            <img src="{{ url_for('static', filename='images/altenative.jpg') }}" alt="Solar energy"/>
+            <div class="social-tile-overlay"><i class="bi bi-envelope-fill"></i></div>
           </div>
-          <div>
-            <strong style="display:block;color:var(--text-lt);font-size:0.66rem;text-transform:uppercase;letter-spacing:0.18em;margin-bottom:3px;font-weight:700">{{ label }}</strong>
-            <a href="{{ href }}" style="color:var(--navy);font-size:0.9rem;text-decoration:none;font-weight:500;transition:color 0.2s"
-               onmouseover="this.style.color='var(--blue)'"
-               onmouseout="this.style.color='var(--navy)'">{{ value }}</a>
+          <div class="social-tile">
+            <img src="{{ url_for('static', filename='images/image.jpg') }}" alt="Team"/>
+            <div class="social-tile-overlay"><i class="bi bi-facebook"></i></div>
           </div>
-        </div>
-        {% endfor %}
-
-        <div style="margin-top:2.5rem;padding:1.5rem;background:var(--off-white);border:1px solid var(--border);border-left:3px solid var(--navy)">
-          <p style="color:var(--navy);font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.5rem">
-            Free Consultation
-          </p>
-          <p style="color:var(--text);font-size:0.875rem;line-height:1.75">Our initial site assessment and consultation is completely free — no obligation, just expert advice tailored to your needs.</p>
-        </div>
-
-        <div style="margin-top:1.75rem;display:flex;gap:10px">
-          <a href="{{ contact.facebook }}" target="_blank" rel="noopener"
-             style="width:40px;height:40px;background:var(--off-white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-lt);text-decoration:none;transition:all 0.2s"
-             onmouseover="this.style.background='var(--navy)';this.style.color='var(--white)';this.style.borderColor='var(--navy)'"
-             onmouseout="this.style.background='var(--off-white)';this.style.color='var(--text-lt)';this.style.borderColor='var(--border)'">
-            <i class="bi bi-facebook" style="font-size:0.9rem"></i>
-          </a>
-          <a href="{{ contact.linkedin }}" target="_blank" rel="noopener"
-             style="width:40px;height:40px;background:var(--off-white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-lt);text-decoration:none;transition:all 0.2s"
-             onmouseover="this.style.background='var(--navy)';this.style.color='var(--white)';this.style.borderColor='var(--navy)'"
-             onmouseout="this.style.background='var(--off-white)';this.style.color='var(--text-lt)';this.style.borderColor='var(--border)'">
-            <i class="bi bi-linkedin" style="font-size:0.9rem"></i>
-          </a>
+          <div class="social-tile">
+            <img src="{{ url_for('static', filename='images/green-energy.jpg') }}" alt="Green energy"/>
+            <div class="social-tile-overlay"><i class="bi bi-linkedin"></i></div>
+          </div>
+          <div class="social-tile">
+            <img src="{{ url_for('static', filename='images/altenative.jpg') }}" alt="Projects"/>
+            <div class="social-tile-overlay"><i class="bi bi-telephone-fill"></i></div>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <!-- QUOTE FORM -->
-      <div class="column is-8 reveal-right">
-        <div style="background:var(--off-white);padding:3rem;border:1px solid var(--border);border-top:3px solid var(--navy)">
-          <h3 style="font-family:var(--font-display);font-weight:600;font-size:2.4rem;color:var(--navy);margin-bottom:2rem;line-height:1.1">
+<!-- CONTACT DETAILS + FORM -->
+<section class="section bg-white" style="padding-top:4rem">
+  <div class="container" style="padding:0 3rem">
+
+    <!-- Contact Info Row (Redan-style: email card / phone card) -->
+    <div class="columns is-variable is-4 mb-6 stagger">
+      {% set details = [
+        ('bi-envelope-fill','Email','Questions &amp; Requests', contact.email, 'mailto:' ~ contact.email),
+        ('bi-telephone-fill','Phone','Call Us Direct', contact.phone, 'tel:' ~ contact.phone.replace(' ','')),
+      ] %}
+      {% for icon, label, sublabel, value, href in details %}
+      <div class="column is-4">
+        <div style="background:var(--off-white);border:1px solid var(--border);border-top:2px solid var(--navy);padding:2rem">
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-lt);margin-bottom:0.5rem">{{ sublabel }}</div>
+          <div style="font-family:var(--font-body);font-weight:700;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);margin-bottom:1rem">{{ label }}</div>
+          <a href="{{ href }}"
+             style="font-size:1rem;color:var(--navy);font-weight:500;text-decoration:none;display:flex;align-items:center;gap:10px;transition:color 0.2s"
+             onmouseover="this.style.color='var(--blue)'"
+             onmouseout="this.style.color='var(--navy)'">
+            <i class="bi {{ icon }}" style="color:var(--blue);font-size:0.9rem"></i>
+            {{ value }}
+          </a>
+          <div style="margin-top:1.25rem">
+            <a href="{{ href }}" class="btn-primary" style="padding:0.65rem 1.5rem;font-size:0.7rem">
+              {{ 'Email Us' if 'mailto' in href else 'Call Us' }} <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="column is-4">
+        <div style="background:var(--off-white);border:1px solid var(--border);border-top:2px solid var(--navy);padding:2rem">
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-lt);margin-bottom:0.5rem">Visit Us</div>
+          <div style="font-family:var(--font-body);font-weight:700;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);margin-bottom:1rem">Address</div>
+          <p style="font-size:0.9rem;color:var(--text);line-height:1.7">
+            <i class="bi bi-geo-alt-fill" style="color:var(--blue);margin-right:8px"></i>
+            {{ contact.address }}
+          </p>
+          <div style="margin-top:1.25rem">
+            <div style="background:var(--gray-1);border:1px solid var(--border);padding:1rem;border-left:3px solid var(--navy)">
+              <p style="font-size:0.78rem;color:var(--text);line-height:1.6">Free consultation available — no obligation, just expert advice.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quote Form -->
+    <div class="columns is-variable is-8">
+      <div class="column is-8 reveal-left">
+        <div style="background:var(--off-white);padding:3rem;border:1px solid var(--border);border-top:2px solid var(--navy)">
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-lt);margin-bottom:0.75rem">— Free of Charge</div>
+          <h3 style="font-family:var(--font-display);font-weight:600;font-size:2.4rem;color:var(--navy);margin-bottom:2rem;line-height:1">
             Request a Free Quote
           </h3>
 
@@ -165,21 +197,65 @@
               </div>
 
               <button type="submit" class="btn-accent" style="width:100%;justify-content:center;padding:1.1rem;font-size:0.8rem">
-                Send Enquiry
+                Send Enquiry <i class="bi bi-arrow-right"></i>
               </button>
             </form>
           </div>
         </div>
       </div>
 
+      <!-- Side panel -->
+      <div class="column is-4 reveal-right">
+        <div style="margin-top:0">
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-lt);margin-bottom:1.5rem">— Our Details</div>
+
+          <div style="margin-bottom:2rem">
+            <p style="font-family:var(--font-display);font-weight:600;font-size:1.8rem;color:var(--navy);line-height:1.1;margin-bottom:1rem">
+              Let's Talk Power Engineering
+            </p>
+            <p style="color:var(--text);line-height:1.85;font-size:0.875rem">
+              Our engineers are happy to advise on your requirements at no cost.
+            </p>
+          </div>
+
+          {% set details = [
+            ('bi-envelope-fill','Email', contact.email, 'mailto:' ~ contact.email),
+            ('bi-telephone-fill','Phone', contact.phone, 'tel:' ~ contact.phone.replace(' ','')),
+            ('bi-geo-alt-fill','Address', contact.address, '#'),
+          ] %}
+          {% for icon, label, value, href in details %}
+          <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)">
+            <div style="width:38px;height:38px;background:var(--off-white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <i class="bi {{ icon }}" style="color:var(--navy-2);font-size:0.85rem"></i>
+            </div>
+            <div>
+              <strong style="display:block;color:var(--text-lt);font-size:0.64rem;text-transform:uppercase;letter-spacing:0.18em;margin-bottom:3px;font-weight:700">{{ label }}</strong>
+              <a href="{{ href }}" style="color:var(--navy);font-size:0.9rem;text-decoration:none;font-weight:500;transition:color 0.2s"
+                 onmouseover="this.style.color='var(--blue)'"
+                 onmouseout="this.style.color='var(--navy)'">{{ value }}</a>
+            </div>
+          </div>
+          {% endfor %}
+
+          <div style="margin-top:1.5rem;display:flex;gap:10px">
+            <a href="{{ contact.facebook }}" target="_blank" rel="noopener"
+               style="width:40px;height:40px;background:var(--off-white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-lt);text-decoration:none;transition:all 0.2s"
+               onmouseover="this.style.background='var(--navy)';this.style.color='var(--white)';this.style.borderColor='var(--navy)'"
+               onmouseout="this.style.background='var(--off-white)';this.style.color='var(--text-lt)';this.style.borderColor='var(--border)'">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="{{ contact.linkedin }}" target="_blank" rel="noopener"
+               style="width:40px;height:40px;background:var(--off-white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-lt);text-decoration:none;transition:all 0.2s"
+               onmouseover="this.style.background='var(--navy)';this.style.color='var(--white)';this.style.borderColor='var(--navy)'"
+               onmouseout="this.style.background='var(--off-white)';this.style.color='var(--text-lt)';this.style.borderColor='var(--border)'">
+              <i class="bi bi-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 </section>
-
-<style>
-@keyframes slideInLeft {
-  to { opacity:1; transform:translateX(0); }
-}
-</style>
 
 {% endblock %}

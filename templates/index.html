@@ -3,86 +3,108 @@
 
 {% block content %}
 
-<!-- HERO -->
+<!-- FULL-BLEED HERO (Redan-style) -->
 <section class="main-hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-inner">
-    <div class="container" style="padding:0">
-      <div class="columns is-vcentered">
-        <div class="column is-7">
-          <div class="eyebrow light fu"><span>Power Engineering Zimbabwe</span></div>
-          <h1 class="sec-title light fu2"
-              style="font-size:clamp(3.5rem,7vw,6.5rem);line-height:0.95;margin-bottom:1.5rem!important">
-            Reliable<br>Solutions,<br>
-            <span style="color:var(--blue-lt)">Unwavering<br>Commitment.</span>
-          </h1>
-          <p class="fu3" style="color:rgba(255,255,255,0.55);max-width:480px;line-height:1.8;font-size:1rem;margin-bottom:2.5rem">
-            Engineering company specialising in Renewable Energy, Power Backup and
-            Power Protection Solutions for industrial, commercial and domestic clients.
-          </p>
-          <div class="fu4" style="display:flex;gap:1rem;flex-wrap:wrap">
-            <a href="/products-services" class="btn-accent">Our Services</a>
-            <a href="/contact" class="btn-outline light">Get a Free Quote</a>
-          </div>
-        </div>
+  <!-- Slideshow backgrounds -->
+  <div class="hero-slides">
+    <div class="hero-slide active">
+      <img src="{{ url_for('static', filename='images/altenative.jpg') }}" alt="Solar energy solutions"/>
+      <div class="hero-slide-overlay"></div>
+    </div>
+    <div class="hero-slide">
+      <img src="{{ url_for('static', filename='images/image.jpg') }}" alt="Power engineering team"/>
+      <div class="hero-slide-overlay"></div>
+    </div>
+    <div class="hero-slide">
+      <img src="{{ url_for('static', filename='images/green-energy.jpg') }}" alt="Green energy"/>
+      <div class="hero-slide-overlay"></div>
+    </div>
+  </div>
 
-        <div class="column is-5 is-hidden-mobile">
-          <!-- decorative stat tiles -->
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;opacity:0;animation:fadeUp 0.7s 0.8s ease forwards">
-            {% set hero_stats = [
-              ('20+','Years in Business'),
-              ('500+','Projects Completed'),
-              ('100%','Client Satisfaction'),
-              ('24/7','Support Available'),
-            ] %}
-            {% for val, lbl in hero_stats %}
-            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:2rem 1.5rem;text-align:center;border-top:2px solid rgba(37,99,235,0.4)">
-              <div style="font-family:var(--font-condensed);font-weight:800;font-size:2.4rem;color:var(--white);line-height:1;letter-spacing:-0.02em">{{ val }}</div>
-              <div style="font-size:0.66rem;color:rgba(255,255,255,0.4);font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-top:0.35rem">{{ lbl }}</div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
+  <!-- Arrow navigation -->
+  <button class="hero-arrow hero-arrow-left" aria-label="Previous slide"><i class="bi bi-arrow-left"></i></button>
+  <button class="hero-arrow hero-arrow-right" aria-label="Next slide"><i class="bi bi-arrow-right"></i></button>
+
+  <!-- Hero content -->
+  <div class="hero-inner">
+    <div style="max-width:640px">
+      <div class="eyebrow light fu"><span>Power Engineering Zimbabwe</span></div>
+      <h1 class="sec-title light fu2"
+          style="font-size:clamp(3.5rem,7vw,6.5rem);line-height:0.92;margin-bottom:1.5rem!important">
+        Enhancing<br>
+        <span style="color:rgba(255,255,255,0.45);font-style:italic">Life</span> on<br>
+        <span style="color:var(--blue-lt)">the Move.</span>
+      </h1>
+      <p class="fu3" style="color:rgba(255,255,255,0.6);max-width:460px;line-height:1.8;font-size:1rem;margin-bottom:2.5rem">
+        Engineering company specialising in Renewable Energy, Power Backup and
+        Power Protection Solutions.
+      </p>
+      <div class="fu4" style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
+        <a href="/contact" class="nav-cta" style="border-radius:0!important;padding:1rem 2.5rem!important;font-size:0.74rem!important">Contact Us</a>
+        <a href="/products-services"
+           style="display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.75);font-family:var(--font-body);font-weight:700;font-size:0.74rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;padding:1rem 0;transition:color 0.2s"
+           onmouseover="this.style.color='var(--white)'"
+           onmouseout="this.style.color='rgba(255,255,255,0.75)'">
+          Our Services <i class="bi bi-arrow-right"></i>
+        </a>
       </div>
     </div>
   </div>
-</section>
 
-<!-- STATS STRIP -->
-<section style="background:var(--off-white);border-bottom:1px solid var(--border);border-top:1px solid var(--border)">
-  <div class="container">
-    <div class="columns stagger" style="margin:0">
-      {% for stat in stats %}
-      <div class="column" style="padding:0">
-        <div class="stat-box">
-          <div class="stat-val">{{ stat.value }}</div>
-          <div class="stat-lbl">{{ stat.label }}</div>
-        </div>
+  <!-- Bottom tab strip (Redan-style) -->
+  <div class="hero-tab-strip">
+    <a href="/about" class="hero-tab-item">
+      <div class="hero-tab-icon"><i class="bi bi-building"></i></div>
+      <div>
+        <div class="hero-tab-label">Our History</div>
+        <div class="hero-tab-desc">Over 20 years delivering power engineering excellence</div>
       </div>
-      {% endfor %}
-    </div>
+    </a>
+    <a href="/about" class="hero-tab-item">
+      <div class="hero-tab-icon"><i class="bi bi-bullseye"></i></div>
+      <div>
+        <div class="hero-tab-label">Mission</div>
+        <div class="hero-tab-desc">Reliable solutions with unwavering commitment</div>
+      </div>
+    </a>
+    <a href="/about" class="hero-tab-item">
+      <div class="hero-tab-icon"><i class="bi bi-eye"></i></div>
+      <div>
+        <div class="hero-tab-label">Vision</div>
+        <div class="hero-tab-desc">Leading Zimbabwe's transition to clean energy</div>
+      </div>
+    </a>
+    <a href="/about" class="hero-tab-item">
+      <div class="hero-tab-icon"><i class="bi bi-star"></i></div>
+      <div>
+        <div class="hero-tab-label">Values</div>
+        <div class="hero-tab-desc">Excellence, integrity, client focus, sustainability</div>
+      </div>
+    </a>
   </div>
 </section>
 
 <!-- ABOUT INTRO -->
-<section class="section bg-white">
-  <div class="container">
+<section class="section bg-white" style="padding-top:7rem">
+  <div class="container" style="padding:0 3rem">
     <div class="columns is-vcentered is-variable is-8">
       <div class="column is-5 reveal-left">
         <div style="position:relative" class="img-zoom-wrap">
           <img src="{{ url_for('static', filename='images/altenative.jpg') }}"
                alt="Powervision engineering"
-               style="width:100%;height:480px;object-fit:cover;display:block"/>
+               style="width:100%;height:520px;object-fit:cover;display:block"/>
           <div class="hero-badge">
             <strong style="display:block;font-family:var(--font-condensed);font-weight:800;font-size:2.6rem;color:var(--white);line-height:1">20+</strong>
             <span style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.75)">Years in Business</span>
           </div>
         </div>
       </div>
-      <div class="column is-7 reveal-right">
-        <div class="eyebrow"><span>Who We Are</span></div>
-        <h2 class="sec-title">Engineering Solutions You Can Trust</h2>
+      <div class="column is-7 reveal-right" style="padding-left:3rem">
+        <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-lt);margin-bottom:1.5rem">— Who We Are</div>
+        <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(2.4rem,4vw,3.8rem);color:var(--navy);line-height:1;margin-bottom:1.5rem">
+          Introducing<br>
+          <em style="color:var(--navy-2)">Powervision</em>
+        </h2>
         <p style="color:var(--text);line-height:1.85;font-size:0.975rem;margin-bottom:1.25rem">
           Powervision is a team driven by a shared passion: delivering exceptional power
           engineering solutions across the industrial, commercial, and domestic landscapes.
@@ -91,48 +113,94 @@
         <p style="color:var(--text);line-height:1.85;font-size:0.975rem;margin-bottom:2rem">
           From the largest industrial facility to the most intricate residential fit-out,
           our commitment to quality, transparency, and long-term client relationships
-          sets us apart.
+          sets us apart from the rest.
         </p>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap">
-          <a href="/about" class="btn-primary">About Us</a>
-          <a href="/the-team" class="btn-outline">Meet the Team</a>
+        <div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap">
+          <a href="/about" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-weight:700;font-size:0.74rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--navy);text-decoration:none;padding-bottom:4px;border-bottom:2px solid var(--navy);transition:color 0.2s,border-color 0.2s"
+             onmouseover="this.style.color='var(--blue)';this.style.borderColor='var(--blue)'"
+             onmouseout="this.style.color='var(--navy)';this.style.borderColor='var(--navy)'">
+            About Us <i class="bi bi-arrow-right"></i>
+          </a>
+          <a href="/the-team" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-weight:700;font-size:0.74rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-lt);text-decoration:none;transition:color 0.2s"
+             onmouseover="this.style.color='var(--navy)'"
+             onmouseout="this.style.color='var(--text-lt)'">
+            Meet the Team <i class="bi bi-arrow-right"></i>
+          </a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="section bg-off" style="background:var(--off-white)">
-  <div class="container">
+<!-- STAT MOSAIC (Redan-style image tiles with numbers) -->
+<section style="background:var(--white);padding:0">
+  <div class="container" style="padding:0 3rem">
+    <div class="stat-mosaic reveal">
+      {% set hero_stats = [
+        ('20+','Years in Business','altenative.jpg'),
+        ('500+','Projects Completed','image.jpg'),
+        ('100%','Client Satisfaction','green-energy.jpg'),
+        ('24/7','Support Available','altenative.jpg'),
+      ] %}
+      {% for val, lbl, img in hero_stats %}
+      <div class="stat-mosaic-tile">
+        <img src="{{ url_for('static', filename='images/' ~ img) }}" alt="{{ lbl }}"/>
+        <div class="tile-overlay"></div>
+        <div class="tile-label">
+          <div class="tile-val">{{ val }}</div>
+          <div class="tile-txt">{{ lbl }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES (Redan-style tab cards) -->
+<section class="section" style="background:var(--off-white);padding-top:6rem;padding-bottom:6rem">
+  <div class="container" style="padding:0 3rem">
     <div class="has-text-centered mb-6 reveal">
-      <div class="eyebrow" style="display:inline-flex;justify-content:center"><span>What We Offer</span></div>
-      <h2 class="sec-title" style="margin-top:0.5rem">Products &amp; Services</h2>
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-lt);margin-bottom:1rem">— What We Offer</div>
+      <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(2.4rem,4vw,3.8rem);color:var(--navy);line-height:1;margin-bottom:1rem">Products &amp; Services</h2>
       <p style="color:var(--text);max-width:540px;margin:0 auto;line-height:1.8;font-size:0.95rem">
         Comprehensive power engineering solutions designed for consistent performance
         and unwavering protection.
       </p>
     </div>
 
-    <div class="columns is-multiline stagger">
+    <!-- Tab cards row -->
+    <div class="tab-cards-row stagger" style="margin-bottom:3rem">
       {% set svcs = [
-        ('bi-sun','Alternative &amp; Green Energy','Solar PV, hybrid systems and green energy solutions tailored for residential, commercial and industrial clients.','alternative-green-energy'),
+        ('bi-sun','Alternative &amp; Green Energy','Solar PV systems, hybrid inverters and clean energy tailored for residential, commercial and industrial clients.','alternative-green-energy'),
         ('bi-lightning-charge','Electrical Installations','Full-scope electrical design and installation for new builds, upgrades and industrial fit-outs.','electrical-installations'),
-        ('bi-battery-charging','Back-Up &amp; Standby Power','Generator sets, UPS systems and battery backup solutions ensuring continuity when the grid fails.','backup-standby-power'),
+        ('bi-battery-charging','Back-Up &amp; Standby Power','Generator sets, UPS systems and battery backup ensuring continuity when the grid fails.','backup-standby-power'),
         ('bi-shield-check','Power System Protection','Surge protection, earth leakage, switchgear and fault management for complete system safety.','power-system-protection'),
-        ('bi-tools','Value Added Services','Maintenance contracts, energy audits, load management and ongoing technical support.','value-added-services'),
-        ('bi-box-seam','Products','Quality electrical components, solar equipment and power products supplied directly.','products'),
       ] %}
       {% for icon, title, desc, slug in svcs %}
-      <div class="column is-4">
+      <div class="tab-card">
+        <div class="tc-icon-wrap"><i class="bi {{ icon }}"></i></div>
+        <div class="tc-label">{{ title | striptags }}</div>
+        <p class="tc-body">{{ desc }}</p>
+        <a href="/products-services/{{ slug }}" class="tc-link">Learn More <i class="bi bi-arrow-right"></i></a>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="columns is-multiline stagger">
+      {% set svcs2 = [
+        ('bi-tools','Value Added Services','Maintenance contracts, energy audits, load management and technical support.','value-added-services'),
+        ('bi-box-seam','Products','Quality electrical components, solar equipment and power products supplied directly.','products'),
+      ] %}
+      {% for icon, title, desc, slug in svcs2 %}
+      <div class="column is-6">
         <a href="/products-services/{{ slug }}" style="display:block;text-decoration:none;height:100%">
-          <div class="svc-card">
-            <i class="bi {{ icon }} svc-icon"></i>
-            <p class="svc-title">{{ title }}</p>
-            <p class="svc-desc">{{ desc }}</p>
-            <span class="svc-more">
-              Learn More <i class="bi bi-arrow-right"></i>
-            </span>
+          <div class="svc-card" style="display:flex;gap:1.5rem;align-items:flex-start">
+            <i class="bi {{ icon }} svc-icon" style="margin-bottom:0;font-size:2rem;flex-shrink:0;margin-top:4px"></i>
+            <div>
+              <p class="svc-title">{{ title }}</p>
+              <p class="svc-desc">{{ desc }}</p>
+              <span class="svc-more">Learn More <i class="bi bi-arrow-right"></i></span>
+            </div>
           </div>
         </a>
       </div>
@@ -145,15 +213,79 @@
   </div>
 </section>
 
-<!-- QUOTE BAND -->
-<section style="background:var(--navy);padding:5rem 0;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.06)">
-  <div style="position:absolute;left:2rem;top:50%;transform:translateY(-50%);font-family:var(--font-display);font-size:16rem;font-weight:700;color:rgba(255,255,255,0.03);line-height:1;pointer-events:none;user-select:none">"</div>
-  <div class="container has-text-centered reveal" style="position:relative;z-index:1">
-    <div style="width:40px;height:1px;background:var(--blue-lt);margin:0 auto 2rem"></div>
-    <p style="font-family:var(--font-display);font-weight:600;font-size:clamp(1.8rem,4vw,3rem);color:var(--white);letter-spacing:0.01em;max-width:720px;margin:0 auto;line-height:1.15">
-      Quality Only Happens When You Care Enough To Do Your Best.
-    </p>
-    <div style="width:40px;height:1px;background:var(--blue-lt);margin:2rem auto 0"></div>
+<!-- TESTIMONIAL (Redan-style) -->
+<section class="testimonial-section">
+  <div class="container" style="padding:0 3rem;position:relative;z-index:1">
+    <div style="width:36px;height:1px;background:rgba(255,255,255,0.25);margin:0 auto 2.5rem"></div>
+
+    <div class="testimonial-slide active">
+      <p class="testimonial-text">
+        "Powervision transformed our facility's power reliability — we haven't had a single outage since they installed our backup system."
+      </p>
+      <div class="testimonial-author">
+        <img src="{{ url_for('static', filename='images/image.jpg') }}" alt="Client" class="testimonial-avatar"/>
+        <div>
+          <div class="testimonial-name">Industrial Client, Harare</div>
+          <div class="testimonial-role">Manufacturing Facility</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-slide">
+      <p class="testimonial-text">
+        "Exceptional solar installation, always professional. The team at Powervision genuinely cares about quality."
+      </p>
+      <div class="testimonial-author">
+        <img src="{{ url_for('static', filename='images/altenative.jpg') }}" alt="Client" class="testimonial-avatar"/>
+        <div>
+          <div class="testimonial-name">Commercial Client, Bulawayo</div>
+          <div class="testimonial-role">Retail Property Owner</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-nav">
+      <div class="testimonial-dot active"></div>
+      <div class="testimonial-dot"></div>
+    </div>
+
+    <div style="width:36px;height:1px;background:rgba(255,255,255,0.25);margin:2.5rem auto 0"></div>
+  </div>
+</section>
+
+<!-- "ON THE MOVE" / UPDATES (Redan newsfeed-style) -->
+<section class="news-section">
+  <div class="container" style="padding:0 3rem">
+    <div class="columns is-variable is-8">
+      <div class="column is-4 reveal-left">
+        <div style="width:28px;height:1px;background:var(--border-md);margin-bottom:1.5rem"></div>
+        <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(2rem,3.5vw,3rem);color:var(--navy);line-height:1;margin-bottom:1.5rem">
+          Powervision<br>on the Move
+        </h2>
+        <p style="color:var(--text);line-height:1.85;font-size:0.9rem;margin-bottom:2rem">
+          We continue to grow and expand our reach and innovate our solutions to meet the needs of our clients and advance Zimbabwe's energy sector.
+        </p>
+        <a href="/products-services" class="btn-primary" style="display:inline-flex">View All Services</a>
+      </div>
+      <div class="column is-8 reveal-right">
+        {% set updates = [
+          ('Alternative &amp; Green Energy','Solar PV, hybrid systems and green energy solutions tailored for residential, commercial and industrial clients.','/products-services/alternative-green-energy'),
+          ('Electrical Installations','Full-scope electrical design and installation for new builds, upgrades and industrial fit-outs.','/products-services/electrical-installations'),
+          ('Back-Up &amp; Standby Power','Generator sets, UPS systems and battery backup solutions ensuring continuity when the grid fails.','/products-services/backup-standby-power'),
+          ('Power System Protection','Surge protection, earth leakage, switchgear and fault management for complete system safety.','/products-services/power-system-protection'),
+        ] %}
+        {% for title, excerpt, href in updates %}
+        <div class="news-list-item">
+          <div class="news-date">Service</div>
+          <div>
+            <div class="news-title"><a href="{{ href }}">{{ title }}</a></div>
+            <div class="news-excerpt">{{ excerpt }}</div>
+          </div>
+          <div class="news-arrow"><i class="bi bi-arrow-right"></i></div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </section>
 
@@ -162,7 +294,7 @@
 
 <!-- CTA -->
 <section class="cta-band reveal">
-  <div class="container" style="position:relative;z-index:1">
+  <div class="container" style="padding:0 3rem;position:relative;z-index:1">
     <div class="columns is-vcentered">
       <div class="column">
         <h2>Ready to Power Your Project?</h2>
@@ -170,11 +302,7 @@
       </div>
       <div class="column is-narrow" style="display:flex;gap:1rem;flex-wrap:wrap">
         <a href="/contact" class="btn-dark">Get a Free Quote</a>
-        <a href="/products-services" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,0.75);padding:0.85rem 2.25rem;font-family:var(--font-body);font-weight:700;font-size:0.74rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,0.25);transition:all 0.25s"
-           onmouseover="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.6)';this.style.color='#fff'"
-           onmouseout="this.style.background='transparent';this.style.borderColor='rgba(255,255,255,0.25)';this.style.color='rgba(255,255,255,0.75)'">
-          Our Services
-        </a>
+        <a href="/products-services" class="btn-outline light">Our Services</a>
       </div>
     </div>
   </div>
